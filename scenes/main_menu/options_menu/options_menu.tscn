@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://vwft63q1jrdl" path="res://scenes/main_menu/options_menu/volume_slider.gd" id="2_is7k0"]
 [ext_resource type="PackedScene" uid="uid://caw84e5akm8b0" path="res://scenes/main_menu/options_menu/action_binding_row.tscn" id="2_yqoo4"]
 
-[node name="OptionsMenu" type="MarginContainer" unique_id=1074797397 node_paths=PackedStringArray("actions_container", "first_focus_target")]
+[node name="OptionsMenu" type="MarginContainer" unique_id=1074797397 node_paths=PackedStringArray("actions_container", "rebind_overlay", "first_focus_target")]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -18,9 +18,13 @@ theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 script = ExtResource("1_yqoo4")
 actions_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RowContainer")
-rebind_overlay_scene = ExtResource("2_2ws05")
 action_binding_row_scene = ExtResource("2_yqoo4")
+rebind_overlay = NodePath("RebindOverlay")
 first_focus_target = NodePath("PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RowContainer/VolumeRow/VolumeSlider")
+
+[node name="RebindOverlay" parent="." unique_id=1241625568 instance=ExtResource("2_2ws05")]
+visible = false
+layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=588984403]
 layout_mode = 2

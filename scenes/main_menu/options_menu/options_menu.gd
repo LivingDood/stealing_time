@@ -3,18 +3,17 @@ extends RightSideMenu
 
 @export var actions: Array[StringName] = []
 @export var actions_container: Control
-@export var rebind_overlay_scene: PackedScene
 @export var action_binding_row_scene: PackedScene
+@export var rebind_overlay: RebindOverlay
 
-var rebind_overlay: RebindOverlay
 var current_rebinding_row: ActionBindingRow
+
+@onready var tree_root: Window = get_tree().root
 
 
 func _ready() -> void:
 	super._ready()
 	
-	rebind_overlay = rebind_overlay_scene.instantiate()
-	get_tree().root.add_child.call_deferred(rebind_overlay)
 	rebind_overlay.rebind_cancelled.connect(_on_rebind_cancelled)
 	rebind_overlay.rebind_finished.connect(_on_rebind_finished)
 	
@@ -29,6 +28,7 @@ func _on_rebind_requested(row: ActionBindingRow) -> void:
 	if current_rebinding_row != null:
 		return
 	
+	rebind_overlay.reparent(tree_root, false)
 	current_rebinding_row = row
 	rebind_overlay.start_capture()
 
@@ -40,6 +40,7 @@ func _on_rebind_cancelled() -> void:
 	current_rebinding_row.update_button_text()
 	current_rebinding_row.make_button_grab_focus()
 	current_rebinding_row = null
+	rebind_overlay.reparent(self, false)
 
 
 func _on_rebind_finished(event: InputEvent) -> void:
@@ -53,3 +54,4 @@ func _on_rebind_finished(event: InputEvent) -> void:
 	current_rebinding_row.update_button_text()
 	current_rebinding_row.make_button_grab_focus()
 	current_rebinding_row = null
+	rebind_overlay.reparent(self, false)
