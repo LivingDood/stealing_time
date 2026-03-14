@@ -53,8 +53,9 @@ func _on_rebind_finished(event: InputEvent) -> void:
 		return
 	
 	var action_name: StringName = _current_rebinding_row.action_name
-	InputMap.action_erase_events(action_name)
-	InputMap.action_add_event(action_name, event)
+	if InputMap.has_action(action_name):
+		InputMap.action_erase_events(action_name)
+		InputMap.action_add_event(action_name, event)
 	
 	_current_rebinding_row.update_button_text()
 	_current_rebinding_row.make_button_grab_focus()
