@@ -80,16 +80,15 @@ func _enter_state(state:int) -> void:
 		EDGE:
 			pass
 		JUMP:
-			print(velocity)
 			falling = true
 			speed = air_speed
 			friction_coeff = air_friction
-			can_move_horizontal = false
+			can_move_horizontal = true
 		AIR:
 			falling = true
 			speed = air_speed
 			friction_coeff = air_friction
-			can_move_horizontal = false
+			can_move_horizontal = true
 		_:
 			pass
 	_state = state

@@ -5,15 +5,7 @@ class_name GrowObj extends AnimatableBody2D
 @export var highlight_shader:ShaderMaterial
 var grown:bool = false
 
-var selected:bool = false:
-	set(val):
-		selected = val
-		if !is_node_ready():
-			return
-		if val:
-			sprite.material = highlight_shader;
-		else:
-			sprite.material = null;
+var selected:bool = false
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_enter)
@@ -42,6 +34,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_mouse_enter() -> void:
 	selected = true
+	sprite.material = highlight_shader;
 	
 func _on_mouse_exit() -> void:
 	selected = false
+	sprite.material = null
