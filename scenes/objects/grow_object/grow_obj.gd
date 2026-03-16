@@ -15,29 +15,24 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exit)
 
 
-func _process(delta: float) -> void:
-	if is_hovered && Input.is_action_pressed("steal"):
-		steal(delta)
-	elif is_hovered && Input.is_action_pressed("give"):
-		give(delta)
-
-
-func steal(seconds:float):
-	if is_equal_approx(
+func steal(seconds:float) -> float:
+	if is_hovered && is_equal_approx(
 			animation_player.current_animation_position,
 			animation_player.current_animation_length):
-		return
+		return 0.0
 	
 	animation_player.advance(seconds)
-	PlayerStats.add_time(seconds)
+	return seconds
 
 
-func give(seconds:float):
-	if is_equal_approx(animation_player.current_animation_position, 0.0):
-		return
+func give(seconds:float) -> float:
+	if is_hovered && is_equal_approx(
+			animation_player.current_animation_position,
+			0.0):
+		return 0.0
 	
 	animation_player.advance(-seconds)
-	PlayerStats.subtract_time(seconds)
+	return seconds
 
 
 func _on_mouse_enter() -> void:
