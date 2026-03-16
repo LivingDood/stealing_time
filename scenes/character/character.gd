@@ -16,6 +16,19 @@ var falling:bool = false
 var gravity:Vector2
 var friction_coeff = ground_friction
 
+@export var current_target: GrowObj = null
+
+
+func _process(delta: float) -> void:
+	if current_target:
+		if Input.is_action_pressed("steal"):
+			var time_stolen: float = current_target.steal(delta)
+			PlayerStats.add_time(time_stolen)
+		elif Input.is_action_pressed("give"):
+			var time_given: float = current_target.give(delta)
+			PlayerStats.subtract_time(time_given)
+
+
 func _physics_process(delta: float) -> void:
 	gravity = get_gravity()
 	var gravAngle = gravity.angle_to(Vector2.DOWN)
