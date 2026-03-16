@@ -6,39 +6,41 @@ extends AnimatableBody2D
 @export var animation_player:AnimationPlayer
 
 var grown:bool = false
-var selected:bool = false
+var is_hovered:bool = false
 
 
 func _ready() -> void:
+	animation_player.current_animation = "grow"
+	animation_player.pause()
+	
 	mouse_entered.connect(_on_mouse_enter)
 	mouse_exited.connect(_on_mouse_exit)
 
 
+func _process(delta: float) -> void:
+	if is_hovered && Input.is_action_pressed("steal"):
+		steal(delta)
+	elif is_hovered && Input.is_action_pressed("give"):
+		give(delta)
+
+
 func steal(seconds:float):
 	grown = true
-	animation_player.play("grow")
+	animation_player.advance(seconds)
 	PlayerStats.add_time(seconds)
 
 
 func give(seconds:float):
 	grown = false
-	animation_player.play_backwards("grow")
-	PlayerStats.add_time(-seconds)
-
-
-func _input(event: InputEvent) -> void:
-	if selected && event is InputEventMouseButton:
-		if !grown && event.button_index == MOUSE_BUTTON_LEFT:
-			steal(20)
-		elif grown && event.button_index == MOUSE_BUTTON_RIGHT:
-			give(20)
+	animation_player.advance(-seconds)
+	PlayerStats.subtract_time(seconds)
 
 
 func _on_mouse_enter() -> void:
-	selected = true
-	sprite.set_instance_shader_parameter("is_enabled", selected)
+	is_hovered = true
+	sprite.set_instance_shader_parameter("is_enabled", is_hovered)
 
 
 func _on_mouse_exit() -> void:
-	selected = false
-	sprite.set_instance_shader_parameter("is_enabled", selected)
+	is_hovered = false
+	sprite.set_instance_shader_parameter("is_enabled", is_hovered)
