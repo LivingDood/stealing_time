@@ -30,8 +30,8 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 
-func _draw():
-	for p in _particles:
+func _draw() -> void:
+	for p: Particle in _particles:
 		draw_texture(particle_texture, p.position)
 
 
