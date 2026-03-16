@@ -23,7 +23,9 @@ func _process(delta: float) -> void:
 
 
 func steal(seconds:float):
-	if is_equal_approx(animation_player.current_animation_position, 1.0):
+	if is_equal_approx(
+			animation_player.current_animation_position,
+			animation_player.current_animation_length):
 		return
 	
 	animation_player.advance(seconds)
