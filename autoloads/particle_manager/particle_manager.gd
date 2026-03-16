@@ -21,17 +21,16 @@ func _process(delta: float) -> void:
 	for i: int in range(_particles.size() - 1, -1, -1):
 		var p = _particles[i]
 		var direction = p.target.global_position - p.position
-		
-		p.time += delta
-		if p.time < 1.0:
-			p.velocity += direction.normalized() * 256.0 * p.time
-		else:
-			p.velocity = direction.normalized() * 256.0
-		
-		p.position += p.velocity * delta
-		
-		if direction.length() < 8.0:
+		if direction.length() < 32.0:
 			_particles.remove_at(i)
+		else:
+			p.time += delta
+			if p.time < 1.0:
+				p.velocity += direction.normalized() * 256.0 * p.time
+			else:
+				p.velocity = direction.normalized() * 1024.0
+			
+			p.position += p.velocity * delta
 	
 	queue_redraw()
 
