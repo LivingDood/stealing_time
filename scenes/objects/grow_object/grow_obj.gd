@@ -1,12 +1,10 @@
 class_name GrowObj
 extends AnimatableBody2D
 
-@export var hitbox:CollisionPolygon2D
-@export var sprite:Sprite2D
-@export var animation_player:AnimationPlayer
+@export var sprite: Sprite2D
+@export var animation_player: AnimationPlayer
 
-var grown:bool = false
-var is_hovered:bool = false
+var is_hovered: bool = false
 
 
 func _ready() -> void:
@@ -25,13 +23,11 @@ func _process(delta: float) -> void:
 
 
 func steal(seconds:float):
-	grown = true
 	animation_player.advance(seconds)
 	PlayerStats.add_time(seconds)
 
 
 func give(seconds:float):
-	grown = false
 	animation_player.advance(-seconds)
 	PlayerStats.subtract_time(seconds)
 
