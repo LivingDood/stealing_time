@@ -181,6 +181,7 @@ graph_offset = Vector2(61.320087, -18.204964)
 script = ExtResource("1_lkv7d")
 sprite = NodePath("Sprite")
 tree = NodePath("AnimationTree")
+min_speed_scale = 0.357
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1903765647]
 texture = ExtResource("2_cuyo6")
