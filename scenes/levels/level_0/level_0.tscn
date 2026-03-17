@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://1ruio0qaspmx"]
+
+[ext_resource type="Script" uid="uid://fnlsjd58ahyw" path="res://scenes/levels/level.gd" id="1_e1xyi"]
+
+[node name="Level0" type="Node2D" unique_id=329832045 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_e1xyi")
+next_level_id = 1
+next_level_path = "uid://ccgj00d4ytf21"
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=921312593]

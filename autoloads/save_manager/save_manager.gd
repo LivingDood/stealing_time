@@ -41,3 +41,11 @@ func save_data() -> void:
 	var data: Dictionary = { KEY_UNLOCKED_LEVELS: unlocked_levels }
 	var json_string: String = JSON.stringify(data, "\t")
 	file.store_string(json_string)
+
+
+func unlock_level(id: int) -> void:
+	if unlocked_levels.has(id):
+		return
+	
+	unlocked_levels.push_back(id)
+	save_data()

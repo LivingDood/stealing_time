@@ -16,6 +16,9 @@ extends Node
 ## SceneManager.change_scene("res://levels/level_3.tscn", "fade")
 ## [/codeblock]
 
+## Emitted after a scene transition has fully completed.
+signal transition_finished
+
 ## Resource type hint used when loading scenes.
 const TYPE_HINT_PACKED_SCENE: String = "PackedScene"
 
@@ -94,6 +97,8 @@ func _change_scene_internal(path: String, transition_name: StringName) -> void:
 	
 	await _transition_in()
 	is_changing = false
+	
+	transition_finished.emit()
 
 
 ## Frees the currently active scene if one exists.[br]

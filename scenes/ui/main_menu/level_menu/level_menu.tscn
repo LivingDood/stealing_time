@@ -45,8 +45,9 @@ theme_override_constants/v_separation = 16
 
 [node name="Level0Button" parent="PanelContainer/MarginContainer/VBoxContainer/HFlowContainer" unique_id=854065977 instance=ExtResource("2_kwh6v")]
 layout_mode = 2
-scene_path = "uid://ccgj00d4ytf21"
+scene_path = "uid://1ruio0qaspmx"
 
 [node name="Level1Button" parent="PanelContainer/MarginContainer/VBoxContainer/HFlowContainer" unique_id=1273137282 instance=ExtResource("2_kwh6v")]
 layout_mode = 2
 text = "1"
+scene_path = "uid://ccgj00d4ytf21"
