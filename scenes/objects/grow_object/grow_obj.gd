@@ -1,5 +1,15 @@
+@tool
 class_name GrowObj
 extends AnimatableBody2D
+
+@export_range(0.0, 1.0, 0.01) var initial_progress: float = 0.0:
+	set(value):
+		initial_progress = value
+		if not is_inside_tree():
+			return
+		
+		var delta: float = (value - animation_player.current_animation_position)
+		animation_player.advance(delta)
 
 @export var sprite: Sprite2D
 @export var animation_player: AnimationPlayer
@@ -10,6 +20,7 @@ var is_hovered: bool = false
 func _ready() -> void:
 	animation_player.play(&"grow")
 	animation_player.pause()
+	animation_player.advance(initial_progress * animation_player.current_animation_length)
 	
 	mouse_entered.connect(_on_mouse_enter)
 	mouse_exited.connect(_on_mouse_exit)
