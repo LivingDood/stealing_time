@@ -21,6 +21,7 @@ func _ready() -> void:
 
 
 func go_to_next_level() -> void:
+	AudioManager.stop_all_sfx()
 	SceneManager.change_scene(next_level_path)
 
 
