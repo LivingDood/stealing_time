@@ -39,6 +39,9 @@ var current_target: GrowObj = null
 
 @onready var space_state = get_world_2d().direct_space_state
 
+func _ready() -> void:
+	PlayerStats.set_player(self)
+
 
 func _process(delta: float) -> void:
 	current_target = _get_object_at_mouse()

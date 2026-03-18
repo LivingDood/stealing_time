@@ -20,6 +20,10 @@ var _remote:RemoteTransform2D
 	set(val):
 		if is_equal_approx(val,progress):
 			return
+		if !looping:
+			progress = clampf(val,0,max_progress*0.9999)
+			path_follow.progress = get_real_progress(progress)
+			return
 		progress = float_mod(val,max_progress)
 		progress_ratio = progress/max_progress
 		if !is_node_ready():
@@ -49,13 +53,12 @@ var max_progress:float = curve.get_baked_length() * (2. if boomerang else 1.)
 @export var _hframes:int = 1
 @export var _vframes:int = 1
 @export var _frame:int = 0
-@export var _highlight_shader:ShaderMaterial
 		
 @export_category("Collision")
 @export var _collision_shapes:Array[CollisionShape2D]
 @export_flags_2d_physics var _collision_layer:int = 1
 @export_flags_2d_physics var _collision_mask:int = 1
-var selected:bool = false
+var is_hovered:bool = false
 
 func _ready() -> void:
 	if !_animatable_body:
@@ -108,31 +111,53 @@ func get_real_progress(prog:float)->float:
 	#until we get to max_progress/2, then moves backwards
 	return max_progress/2 - abs(float_mod(prog,max_progress) - max_progress/2)
 
-func steal(seconds:float) -> void:
+func steal(seconds:float) -> float:
+	if _internal_time <= 0.:
+		return 0.
+	seconds = min(_internal_time,seconds)
 	PlayerStats.add_time(seconds)
-	progress += speed*seconds
+	_internal_time -= seconds
+	if looping || (_internal_time < max_progress && _internal_time >= 0):
+		progress -= speed*seconds
+	return seconds
 
-func give(seconds:float) -> void:
-	PlayerStats.add_time(-seconds)
-	progress -= speed*seconds
-
-func _input(event: InputEvent) -> void:
-	if selected && event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			steal(5)
-			selected = false
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			give(5)
-			selected = false
+func give(seconds:float) -> float:
+	PlayerStats.subtract_time(seconds)
+	_internal_time += seconds
+	if looping || (_internal_time < max_progress && _internal_time >= 0):
+		progress += speed*seconds
+	return seconds
 
 func _on_mouse_enter() -> void:
-	selected = true;
+	is_hovered = true
+	_sprite.set_instance_shader_parameter("is_enabled",is_hovered)
 
 func _on_mouse_exit() -> void:
-	selected = false;
+	is_hovered = false
+	_sprite.set_instance_shader_parameter("is_enabled",is_hovered)
 
+var _internal_time:float = 0.
+
+func _do_time_step(delta:float) -> void:
+	_internal_time += delta;
+	var next_prog:float = progress + speed * delta
+	if looping || (next_prog < max_progress && next_prog >= 0):
+		progress = next_prog
+
+var selected:bool = false
 func _physics_process(delta: float) -> void:
-	progress+=speed*delta
+	_do_time_step(delta)
+	if is_hovered || selected:
+		if Input.is_action_pressed("steal"):
+			if(steal(delta*2) > 0):
+				selected = true
+				ParticleManager.generate(_sprite.global_position, PlayerStats.player)
+		elif Input.is_action_pressed("give"):
+			if(give(delta*2) > 0):
+				ParticleManager.generate(PlayerStats.player.global_position,_sprite)
+				selected = true
+		else:
+			selected = false
 
 func toggle_looping() -> void:
 	looping = !looping
@@ -195,7 +220,3 @@ func set_collision_shapes(shapes:Array[CollisionShape2D]) -> void:
 	else:
 		for shape in _collision_shapes:
 			_animatable_body.add_child(shape)
-
-func set_selected(val:bool) -> void:
-	_sprite.material = _highlight_shader if val else null
-	selected = val

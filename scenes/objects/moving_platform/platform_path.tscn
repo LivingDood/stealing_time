@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvgkus60jjudo" path="res://scenes/objects/moving_platform/platform_path.gd" id="1_ti5e4"]
 [ext_resource type="Texture2D" uid="uid://j63toosxu5jo" path="res://icon.svg" id="2_daxat"]
+[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/highlight/highlight.gdshader" id="2_my54y"]
 
 [sub_resource type="Curve2D" id="Curve2D_1sdbv"]
 bake_interval = 20.0
@@ -12,6 +13,12 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvoga"]
 size = Vector2(128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkh7w"]
+shader = ExtResource("2_my54y")
+shader_parameter/outline_thickness = 5.0
+shader_parameter/anti_alias_amount = 1.0
+shader_parameter/outline_colour = Color(1, 1, 1, 1)
 
 [node name="PlatformPath" type="Path2D" unique_id=1366809630 node_paths=PackedStringArray("_sprite", "_animatable_body") groups=["stealable"]]
 curve = SubResource("Curve2D_1sdbv")
@@ -26,4 +33,5 @@ boomerang = true
 shape = SubResource("RectangleShape2D_uvoga")
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=1656176179]
+material = SubResource("ShaderMaterial_mkh7w")
 texture = ExtResource("2_daxat")
