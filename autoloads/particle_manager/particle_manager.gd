@@ -35,12 +35,13 @@ func _draw() -> void:
 		draw_texture(particle_texture, p.position)
 
 
-func generate(from: Vector2, target: Node2D, amount: int = 1) -> void:
+func generate(from: Vector2, target: Node2D, sfx: AudioStream, amount: int = 1) -> void:
 	for i: int in amount:
 		var p = Particle.new()
 		p.position = from
 		p.velocity = Vector2.from_angle(randf() * TAU) * randf_range(40.0, 120.0)
 		p.target = target
+		AudioManager.play_sfx(sfx, true)
 		_particles.append(p)
 
 

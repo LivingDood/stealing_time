@@ -35,6 +35,10 @@ var falling:bool = false
 var gravity:Vector2
 var friction_coeff = ground_friction
 
+@export_category("Interaction SFX")
+@export var steal_sfx: AudioStream
+@export var give_sfx: AudioStream
+
 var current_target: GrowObj = null
 
 @onready var space_state = get_world_2d().direct_space_state
@@ -47,12 +51,12 @@ func _process(delta: float) -> void:
 			var time_stolen: float = current_target.steal(delta)
 			PlayerStats.add_time(time_stolen)
 			if time_stolen > 0.0:
-				ParticleManager.generate(current_target.global_position, self)
+				ParticleManager.generate(current_target.global_position, self, steal_sfx)
 		elif Input.is_action_pressed("give"):
 			var time_given: float = current_target.give(delta)
 			PlayerStats.subtract_time(time_given)
 			if time_given > 0.0:
-				ParticleManager.generate(self.global_position, current_target)
+				ParticleManager.generate(self.global_position, current_target, give_sfx)
 
 
 func _get_object_at_mouse() -> Node2D:
