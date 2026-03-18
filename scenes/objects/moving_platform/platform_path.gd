@@ -117,7 +117,6 @@ func steal(seconds:float) -> float:
 	seconds = min(_internal_time,seconds)
 	PlayerStats.add_time(seconds)
 	_internal_time -= seconds
-	print(_internal_time)
 	if looping || (_internal_time*speed < max_progress && _internal_time >= 0):
 		progress -= speed*seconds
 	return seconds
