@@ -20,14 +20,13 @@ shader_parameter/outline_thickness = 5.0
 shader_parameter/anti_alias_amount = 1.0
 shader_parameter/outline_colour = Color(1, 1, 1, 1)
 
-[node name="PlatformPath" type="Path2D" unique_id=1366809630 node_paths=PackedStringArray("_sprite", "_animatable_body") groups=["stealable"]]
+[node name="PlatformPath" type="Path2D" unique_id=1366809630]
 curve = SubResource("Curve2D_1sdbv")
-script = ExtResource("1_ti5e4")
-_sprite = NodePath("AnimatableBody2D/Sprite2D")
-_animatable_body = NodePath("AnimatableBody2D")
-boomerang = true
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1515891538]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1515891538 node_paths=PackedStringArray("_sprite", "_path") groups=["stealable"]]
+script = ExtResource("1_ti5e4")
+_sprite = NodePath("Sprite2D")
+_path = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=798560832]
 shape = SubResource("RectangleShape2D_uvoga")

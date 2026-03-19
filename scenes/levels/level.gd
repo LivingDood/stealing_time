@@ -15,8 +15,9 @@ func _ready() -> void:
 	exit_area.body_entered.connect(_on_exit_area_entered)
 	PlayerStats.set_time(initial_timer)
 	await SceneManager.transition_finished
-	animation_player.play(&"intro")
-	await animation_player.animation_finished
+	if(animation_player.has_animation(&"intro")):
+		animation_player.play(&"intro")
+		await animation_player.animation_finished
 	PlayerStats.paused = false
 
 

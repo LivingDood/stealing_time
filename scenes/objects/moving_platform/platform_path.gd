@@ -1,8 +1,9 @@
-class_name PlatformPath extends Path2D
+class_name PlatformPath extends Stealable
 
 var path_follow:PathFollow2D
 @export var _sprite:Sprite2D
-@export var _animatable_body:AnimatableBody2D
+@export var _path:Path2D
+
 #Remote transform to set the position of the body
 var _remote:RemoteTransform2D
 
@@ -33,7 +34,7 @@ var _remote:RemoteTransform2D
 #This gets multiplied by two if boomerang is true, so
 #that the "true path" is a full cycle of the boomerang
 #movement
-var max_progress:float = curve.get_baked_length() * (2. if boomerang else 1.)
+@onready var max_progress:float = _path.curve.get_baked_length() * (2. if boomerang else 1.)
 @export_range(0,1,0.01) var progress_ratio:float = 0:
 	set(val):
 		if is_equal_approx(val,progress_ratio):
@@ -42,12 +43,6 @@ var max_progress:float = curve.get_baked_length() * (2. if boomerang else 1.)
 		progress = max_progress*progress_ratio
 		
 
-@export_category("Platform Transform")
-#Sets the rotation of the platform
-@export_range(0,360,0.1,"radians_as_degrees") var _platform_rotation:float = 0.0
-#Sets the scale of the platform
-@export var _platform_scale:Vector2 = Vector2.ZERO
-
 @export_category("Sprite")
 @export var _texture:Texture2D
 @export var _hframes:int = 1
@@ -55,46 +50,37 @@ var max_progress:float = curve.get_baked_length() * (2. if boomerang else 1.)
 @export var _frame:int = 0
 		
 @export_category("Collision")
-@export var _collision_shapes:Array[CollisionShape2D]
-@export_flags_2d_physics var _collision_layer:int = 1
-@export_flags_2d_physics var _collision_mask:int = 1
 var is_hovered:bool = false
+@export var time_transfer_multiplier:float = 2.
+
 
 func _ready() -> void:
-	if !_animatable_body:
-		_animatable_body = StaticBody2D.new()
-	_animatable_body.mouse_entered.connect(_on_mouse_enter)
-	_animatable_body.mouse_exited.connect(_on_mouse_exit)
+	mouse_entered.connect(_on_mouse_enter)
+	mouse_exited.connect(_on_mouse_exit)
 	
 	if !_sprite:
 		_sprite = Sprite2D.new()
-		_animatable_body.add_child(_sprite)
+		add_child(_sprite)
 	
 	path_follow = PathFollow2D.new()
 	
 	path_follow.rotates = false
 	path_follow.cubic_interp = false
 	path_follow.loop = looping
-	add_child(path_follow)
+	setup.call_deferred()
+	#_path.add_child.call_deferred(path_follow)
+	
+	
+	input_pickable = true
+
+func setup() -> void:
+	_path.add_child(path_follow)
 	path_follow.progress_ratio = 1
 	max_progress = path_follow.progress * (2. if boomerang else 1.)
 	path_follow.progress = get_real_progress(progress)
 	_remote = RemoteTransform2D.new()
 	path_follow.add_child(_remote)
-	_remote.remote_path = _remote.get_path_to(_animatable_body)
-	
-	_sprite.global_position = _animatable_body.global_position
-	_animatable_body.rotation = _platform_rotation
-	_animatable_body.scale = _platform_scale
-	_animatable_body.collision_layer = _collision_layer
-	_animatable_body.collision_mask = _collision_mask
-	_animatable_body.input_pickable = true
-	set_collision_shapes(_collision_shapes)
-	
-	set_platform_texture(_texture)
-	_sprite.hframes = _hframes
-	_sprite.vframes = _vframes
-	_sprite.frame = _frame
+	_remote.remote_path = _remote.get_path_to(self)
 
 #Function for finding numbers "mod" floats
 func float_mod(val:float,mod_val:float)->float:
@@ -112,6 +98,7 @@ func get_real_progress(prog:float)->float:
 	return max_progress/2 - abs(float_mod(prog,max_progress) - max_progress/2)
 
 func steal(seconds:float) -> float:
+	seconds *= time_transfer_multiplier
 	if _internal_time <= 0.:
 		return 0.
 	seconds = min(_internal_time,seconds)
@@ -122,6 +109,7 @@ func steal(seconds:float) -> float:
 	return seconds
 
 func give(seconds:float) -> float:
+	seconds *= time_transfer_multiplier
 	PlayerStats.subtract_time(seconds)
 	_internal_time += seconds
 	if looping || (_internal_time*speed < max_progress && _internal_time >= 0):
@@ -147,17 +135,6 @@ func _do_time_step(delta:float) -> void:
 var selected:bool = false
 func _physics_process(delta: float) -> void:
 	_do_time_step(delta)
-	if is_hovered || selected:
-		if Input.is_action_pressed("steal"):
-			if(steal(delta*2) > 0):
-				selected = true
-				ParticleManager.generate(_sprite.global_position, PlayerStats.player)
-		elif Input.is_action_pressed("give"):
-			if(give(delta*2) > 0):
-				ParticleManager.generate(PlayerStats.player.global_position,_sprite)
-				selected = true
-		else:
-			selected = false
 
 func toggle_looping() -> void:
 	looping = !looping
@@ -166,14 +143,6 @@ func toggle_looping() -> void:
 func toggle_boomerang() -> void:
 	max_progress *= 0.5 if boomerang else 2.
 	boomerang = !boomerang
-
-func set_platform_rotation(rads:float) -> void:
-	_animatable_body.rotation = rads
-	_platform_rotation = rads
-
-func set_platform_scale(scale_vec:Vector2) -> void:
-	_animatable_body.scale = scale_vec
-	_platform_scale = scale_vec
 
 func set_platform_texture(tex:Texture2D) -> void:
 	_texture = tex
@@ -202,21 +171,3 @@ func set_platform_frame(val:int) -> void:
 	if val > max_frame:
 		val = max_frame
 	_sprite.frame = val
-
-func set_collision_layer(layer:int) -> void:
-	_animatable_body.collision_layer = layer
-	_collision_layer = layer
-
-func set_collision_mask(mask:int) -> void:
-	_animatable_body.collision_mask = mask
-	_collision_mask = mask
-
-func set_collision_shapes(shapes:Array[CollisionShape2D]) -> void:
-	_collision_shapes = shapes
-	if _collision_shapes.is_empty():
-		for child in _animatable_body.get_children():
-			if (child is CollisionShape2D) && (child.shape):
-				_collision_shapes.append(child)
-	else:
-		for shape in _collision_shapes:
-			_animatable_body.add_child(shape)

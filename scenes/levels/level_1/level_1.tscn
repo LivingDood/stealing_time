@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://c1d4cgsnem67a" path="res://scenes/ui/hud.tscn" id="4_cyt5c"]
 [ext_resource type="Script" uid="uid://l0oay6hngdph" path="res://scenes/levels/follow_camera.gd" id="5_7uxs1"]
 
+[sub_resource type="Curve2D" id="Curve2D_vmhy7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, 2, 0, 0, 0, 0, -4, 174)
+}
+point_count = 2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uxs1"]
 size = Vector2(5310.5, 1127)
 
@@ -19,17 +25,11 @@ distance = -78.95242
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7uxs1"]
 normal = Vector2(-1, 0)
 
-[sub_resource type="Curve2D" id="Curve2D_vmhy7"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2, 2, 0, 0, 0, 0, -4, 174)
-}
-point_count = 2
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmhy7"]
 size = Vector2(182, 275)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uxs1"]
-radius = 174.01149
+radius = 104.702354
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lh42"]
 radius = 99.724625
@@ -46,8 +46,17 @@ exit_area = NodePath("Area2D")
 position = Vector2(430, 175)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=711602039 node_paths=PackedStringArray("target")]
+ignore_rotation = false
+rotation_smoothing_enabled = true
 script = ExtResource("5_7uxs1")
 target = NodePath("../Character")
+
+[node name="PlatformPath" parent="." unique_id=1366809630 instance=ExtResource("2_48ne7")]
+position = Vector2(1129, 286)
+curve = SubResource("Curve2D_vmhy7")
+
+[node name="AnimatableBody2D" parent="PlatformPath" index="0" unique_id=1515891538]
+looping = false
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=823194823]
 
@@ -78,14 +87,7 @@ offset_bottom = 1669.0
 position = Vector2(5313, 530)
 shape = SubResource("WorldBoundaryShape2D_7uxs1")
 
-[node name="PlatformPath" parent="." unique_id=1366809630 instance=ExtResource("2_48ne7")]
-position = Vector2(1129, 286)
-curve = SubResource("Curve2D_vmhy7")
-looping = false
-boomerang = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1009467017]
-visible = false
 
 [node name="TimerHud" parent="CanvasLayer" unique_id=1546810575 instance=ExtResource("4_cyt5c")]
 
@@ -96,7 +98,8 @@ position = Vector2(5224, 392)
 shape = SubResource("RectangleShape2D_vmhy7")
 
 [node name="GravArea" type="Area2D" parent="." unique_id=1892919345]
-position = Vector2(2051, 259)
+position = Vector2(3584, -1693)
+scale = Vector2(20, 20)
 gravity_space_override = 3
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -109,3 +112,5 @@ shape = SubResource("CircleShape2D_7uxs1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GravArea/StaticBody2D" unique_id=2084801871]
 shape = SubResource("CircleShape2D_3lh42")
+
+[editable path="PlatformPath"]

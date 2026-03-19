@@ -38,42 +38,9 @@ var falling:bool = false
 var gravity:Vector2
 var friction_coeff = ground_friction
 
-@export_category("Interaction SFX")
-@export var steal_sfx: AudioStream
-@export var give_sfx: AudioStream
-
-var current_target: GrowObj = null
-
-@onready var space_state = get_world_2d().direct_space_state
-
 func _ready() -> void:
 	PlayerStats.set_player(self)
 
-
-func _process(delta: float) -> void:
-	current_target = _get_object_at_mouse()
-	if current_target:
-		if Input.is_action_pressed("steal"):
-			var time_stolen: float = current_target.steal(delta)
-			PlayerStats.add_time(time_stolen)
-			if time_stolen > 0.0:
-				ParticleManager.generate(current_target.global_position, self, steal_sfx)
-		elif Input.is_action_pressed("give"):
-			var time_given: float = current_target.give(delta)
-			PlayerStats.subtract_time(time_given)
-			if time_given > 0.0:
-				ParticleManager.generate(self.global_position, current_target, give_sfx)
-
-
-func _get_object_at_mouse() -> Node2D:
-	var query = PhysicsPointQueryParameters2D.new()
-	query.position = get_global_mouse_position()
-	
-	var result = space_state.intersect_point(query, 1)
-	if result.is_empty() or result[0].collider is not GrowObj:
-		return null
-	
-	return result[0].collider
 
 func _set_time_dependent_factors() -> void:
 	var t:float = PlayerStats.remaining_time
