@@ -28,7 +28,7 @@ func _ready() -> void:
 func go_to_next_level() -> void:
 	ParticleManager.remove_all()
 	AudioManager.stop_all_sfx()
-	SceneManager.change_scene(next_level_path)
+	SceneManager.change_scene(next_level_path, "slide_up")
 
 
 func _on_exit_area_entered(_body: Node2D) -> void:
