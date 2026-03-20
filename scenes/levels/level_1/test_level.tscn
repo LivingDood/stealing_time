@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ccgj00d4ytf21"]
 
-[ext_resource type="Script" uid="uid://bumgohx5dy0b3" path="res://scenes/levels/level_1/level_1.gd" id="1_7uxs1"]
-[ext_resource type="PackedScene" uid="uid://crtsrqp5yp1ik" path="res://scenes/character/character.tscn" id="1_v45ci"]
-[ext_resource type="PackedScene" uid="uid://cgye513ma42o4" path="res://scenes/objects/moving_platform/platform_path.tscn" id="2_48ne7"]
-[ext_resource type="PackedScene" uid="uid://c1d4cgsnem67a" path="res://scenes/ui/hud.tscn" id="4_cyt5c"]
-[ext_resource type="Script" uid="uid://l0oay6hngdph" path="res://scenes/levels/follow_camera.gd" id="5_7uxs1"]
+[ext_resource type="Script" uid="uid://bumgohx5dy0b3" path="res://scenes/levels/level_1/test_level.gd" id="1_u4cxi"]
+[ext_resource type="PackedScene" uid="uid://crtsrqp5yp1ik" path="res://scenes/character/character.tscn" id="2_nvi8s"]
+[ext_resource type="Script" uid="uid://l0oay6hngdph" path="res://scenes/levels/follow_camera.gd" id="3_l4mxu"]
+[ext_resource type="PackedScene" uid="uid://cgye513ma42o4" path="res://scenes/objects/moving_platform/platform_path.tscn" id="4_15cv5"]
+[ext_resource type="PackedScene" uid="uid://c1d4cgsnem67a" path="res://scenes/ui/hud.tscn" id="5_ex43x"]
 
 [sub_resource type="Curve2D" id="Curve2D_vmhy7"]
 _data = {
@@ -34,24 +34,24 @@ radius = 104.702354
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lh42"]
 radius = 99.724625
 
-[node name="LevelOne" type="Node2D" unique_id=1029438254 node_paths=PackedStringArray("animation_player", "exit_area")]
-script = ExtResource("1_7uxs1")
+[node name="TestLevel" type="Node2D" unique_id=1029438254 node_paths=PackedStringArray("animation_player", "exit_area")]
+script = ExtResource("1_u4cxi")
 level_id = 1
 animation_player = NodePath("AnimationPlayer")
 exit_area = NodePath("Area2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1660511655]
 
-[node name="Character" parent="." unique_id=47124019 instance=ExtResource("1_v45ci")]
+[node name="Character" parent="." unique_id=47124019 instance=ExtResource("2_nvi8s")]
 position = Vector2(430, 175)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=711602039 node_paths=PackedStringArray("target")]
 ignore_rotation = false
 rotation_smoothing_enabled = true
-script = ExtResource("5_7uxs1")
+script = ExtResource("3_l4mxu")
 target = NodePath("../Character")
 
-[node name="PlatformPath" parent="." unique_id=1366809630 instance=ExtResource("2_48ne7")]
+[node name="PlatformPath" parent="." unique_id=1366809630 instance=ExtResource("4_15cv5")]
 position = Vector2(1129, 286)
 curve = SubResource("Curve2D_vmhy7")
 
@@ -89,7 +89,7 @@ shape = SubResource("WorldBoundaryShape2D_7uxs1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1009467017]
 
-[node name="TimerHud" parent="CanvasLayer" unique_id=1546810575 instance=ExtResource("4_cyt5c")]
+[node name="TimerHud" parent="CanvasLayer" unique_id=1546810575 instance=ExtResource("5_ex43x")]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=190020448]
 
