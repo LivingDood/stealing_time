@@ -1,3 +1,4 @@
+@tool
 class_name PlatformPath extends Stealable
 
 var path_follow:PathFollow2D
@@ -74,6 +75,7 @@ func setup() -> void:
 	_path.add_child(path_follow)
 	path_follow.progress_ratio = 1
 	max_progress = path_follow.progress * (2. if boomerang else 1.)
+	progress = progress_ratio*max_progress
 	path_follow.progress = get_real_progress(progress)
 	print(path_follow.progress,progress)
 	_remote = RemoteTransform2D.new()
