@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://crtsrqp5yp1ik"]
 
 [ext_resource type="Script" uid="uid://dj06olmweaw2e" path="res://scenes/character/character.gd" id="1_lkv7d"]
-[ext_resource type="Texture2D" uid="uid://c6y4wdoiu8vap" path="res://resources/images/character.png" id="2_cuyo6"]
+[ext_resource type="Texture2D" uid="uid://c6y4wdoiu8vap" path="res://resources/images/sprites/character_adult.png" id="2_cuyo6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ushfy"]
 radius = 16.0
