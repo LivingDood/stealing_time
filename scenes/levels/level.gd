@@ -37,5 +37,6 @@ func _on_exit_area_entered(_body: Node2D) -> void:
 	go_to_next_level()
 
 
-func _on_traps_entered(_body: Node2D) -> void:
-	SceneManager.change_scene(get_tree().current_scene.scene_file_path)
+func _on_traps_entered(body: Node2D) -> void:
+	if body == PlayerStats.player:
+		SceneManager.change_scene(get_tree().current_scene.scene_file_path)
