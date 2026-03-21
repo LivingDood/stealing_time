@@ -24,6 +24,7 @@ var _air_time_remaining = air_time
 @export_range(0,1,0.001) var min_scale_factor:float = 0.5
 
 enum Age { OLD, ADULT, TEEN, CHILD }
+@export var age_map: Dictionary[Age, float] = {}
 @export var sprite_map: Dictionary[Age, Texture2D] = {}
 
 var _speed_scale:float = 1
@@ -62,15 +63,15 @@ func _set_time_dependent_factors() -> void:
 	else:
 		_speed_scale = lerpf(1,min_speed_scale,(t - slowing_threshold_time)/(max_slow_time - slowing_threshold_time))
 	
-	if t > 45.0:
+	if t > age_map[Age.OLD]:
 		sprite.texture = sprite_map[Age.OLD]
 		_shape.height = 100.0
 		collision_shape.position.y = 14.0
-	elif t > 20.0:
+	elif t > age_map[Age.ADULT]:
 		sprite.texture = sprite_map[Age.ADULT]
 		_shape.height = 100.0
 		collision_shape.position.y = 14.0
-	elif t > 10.0:
+	elif t > age_map[Age.TEEN]:
 		sprite.texture = sprite_map[Age.TEEN]
 		_shape.height = 80.0
 		collision_shape.position.y = 24.0
