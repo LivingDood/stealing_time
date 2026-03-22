@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ctnsho34vt00o"]
+
+[ext_resource type="Texture2D" uid="uid://b6wjt4egqc35f" path="res://resources/images/tilesets/dirt.png" id="1_fbgre"]
+
+[node name="PlatformSprite" type="Node2D" unique_id=1011921266]
+
+[node name="TopLeftSprite" type="Sprite2D" parent="." unique_id=1556135666]
+position = Vector2(-32, -32)
+texture = ExtResource("1_fbgre")
+hframes = 4
+vframes = 6
+
+[node name="TopRightSprite" type="Sprite2D" parent="." unique_id=1604375676]
+position = Vector2(32, -32)
+texture = ExtResource("1_fbgre")
+hframes = 4
+vframes = 6
+frame = 2
+
+[node name="BottomLeftSprite" type="Sprite2D" parent="." unique_id=1575422126]
+position = Vector2(-32, 32)
+texture = ExtResource("1_fbgre")
+hframes = 4
+vframes = 6
+frame = 8
+
+[node name="BottomRightSprite" type="Sprite2D" parent="." unique_id=815788482]
+position = Vector2(32, 32)
+texture = ExtResource("1_fbgre")
+hframes = 4
+vframes = 6
+frame = 10
