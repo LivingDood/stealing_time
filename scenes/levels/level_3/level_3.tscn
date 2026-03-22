@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://coxx2yn3347dq" path="res://scenes/objects/grow_object/grow_obj.tscn" id="5_yxxbu"]
 [ext_resource type="Texture2D" uid="uid://yv5id2ccrcre" path="res://resources/images/backgrounds/plains.png" id="6_5ymxc"]
 [ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/images/tilesets/dirt.tres" id="6_yxxbu"]
-[ext_resource type="PackedScene" uid="uid://ctnsho34vt00o" path="res://scenes/objects/moving_platform/platform_sprite.tscn" id="9_nd7a6"]
+[ext_resource type="Texture2D" uid="uid://gi5xlh6o62ui" path="res://resources/images/sprites/platform.png" id="9_ah86r"]
+[ext_resource type="Texture2D" uid="uid://b6wjt4egqc35f" path="res://resources/images/tilesets/dirt.png" id="10_drns5"]
 
 [sub_resource type="Animation" id="Animation_papml"]
 length = 0.001
@@ -298,7 +299,8 @@ speed = 142.5
 boomerang = true
 metadata/_custom_type_script = "uid://cvgkus60jjudo"
 
-[node name="PlatformSprite" parent="Environment/Objects/Platforms/Path2D/PlatformPath" unique_id=1011921266 instance=ExtResource("9_nd7a6")]
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/Platforms/Path2D/PlatformPath" unique_id=1608858501]
+texture = ExtResource("9_ah86r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/Platforms/Path2D/PlatformPath" unique_id=795268721]
 shape = SubResource("RectangleShape2D_ah86r")
@@ -307,17 +309,17 @@ shape = SubResource("RectangleShape2D_ah86r")
 position = Vector2(1395, 279)
 curve = SubResource("Curve2D_m7db3")
 
-[node name="PlatformPath" type="AnimatableBody2D" parent="Environment/Objects/Platforms/Path2D2" unique_id=115847075 node_paths=PackedStringArray("_sprite", "_path")]
+[node name="PlatformPath" type="AnimatableBody2D" parent="Environment/Objects/Platforms/Path2D2" unique_id=115847075 node_paths=PackedStringArray("_path")]
 position = Vector2(356.25, 0)
 input_pickable = true
 script = ExtResource("2_qpij7")
-_sprite = NodePath("")
 _path = NodePath("..")
 speed = 142.5
 boomerang = true
 metadata/_custom_type_script = "uid://cvgkus60jjudo"
 
-[node name="PlatformSprite" parent="Environment/Objects/Platforms/Path2D2/PlatformPath" unique_id=1628697547 instance=ExtResource("9_nd7a6")]
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/Platforms/Path2D2/PlatformPath" unique_id=1433908155]
+texture = ExtResource("9_ah86r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/Platforms/Path2D2/PlatformPath" unique_id=1836337435]
 shape = SubResource("RectangleShape2D_ah86r")
@@ -326,16 +328,16 @@ shape = SubResource("RectangleShape2D_ah86r")
 position = Vector2(2832, 12)
 curve = SubResource("Curve2D_qra2n")
 
-[node name="PlatformPath" type="AnimatableBody2D" parent="Environment/Objects/Platforms/Path2D3" unique_id=1434275834 node_paths=PackedStringArray("_sprite", "_path")]
+[node name="PlatformPath" type="AnimatableBody2D" parent="Environment/Objects/Platforms/Path2D3" unique_id=1434275834 node_paths=PackedStringArray("_path")]
 position = Vector2(257.76294, 2.124279)
 input_pickable = true
 script = ExtResource("2_qpij7")
-_sprite = NodePath("")
 _path = NodePath("..")
 speed = -200.0
 metadata/_custom_type_script = "uid://cvgkus60jjudo"
 
-[node name="PlatformSprite" parent="Environment/Objects/Platforms/Path2D3/PlatformPath" unique_id=1950537194 instance=ExtResource("9_nd7a6")]
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/Platforms/Path2D3/PlatformPath" unique_id=1383561704]
+texture = ExtResource("9_ah86r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/Platforms/Path2D3/PlatformPath" unique_id=287687035]
 shape = SubResource("RectangleShape2D_drns5")
@@ -344,20 +346,34 @@ shape = SubResource("RectangleShape2D_drns5")
 position = Vector2(2658, 29)
 curve = SubResource("Curve2D_yxxbu")
 
-[node name="PlatformPath" type="AnimatableBody2D" parent="Environment/Objects/Platforms/Path2D4" unique_id=142965302 node_paths=PackedStringArray("_sprite", "_path")]
+[node name="PlatformPath" type="AnimatableBody2D" parent="Environment/Objects/Platforms/Path2D4" unique_id=142965302 node_paths=PackedStringArray("_path")]
 input_pickable = true
 script = ExtResource("2_qpij7")
-_sprite = NodePath("")
 _path = NodePath("..")
 boomerang = true
 metadata/_custom_type_script = "uid://cvgkus60jjudo"
 
-[node name="PlatformSprite" parent="Environment/Objects/Platforms/Path2D4/PlatformPath" unique_id=1651105049 instance=ExtResource("9_nd7a6")]
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/Platforms/Path2D4/PlatformPath" unique_id=1627537826]
+texture = ExtResource("9_ah86r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/Platforms/Path2D4/PlatformPath" unique_id=667848910]
 shape = SubResource("RectangleShape2D_drns5")
 
 [node name="Hazard" type="Area2D" parent="Environment/Objects/Platforms/Path2D4/PlatformPath" unique_id=2126016594]
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/Platforms/Path2D4/PlatformPath/Hazard" unique_id=1037078408]
+position = Vector2(-32, -96)
+texture = ExtResource("10_drns5")
+hframes = 4
+vframes = 6
+frame = 20
+
+[node name="Sprite2D2" type="Sprite2D" parent="Environment/Objects/Platforms/Path2D4/PlatformPath/Hazard" unique_id=679269355]
+position = Vector2(32, -96)
+texture = ExtResource("10_drns5")
+hframes = 4
+vframes = 6
+frame = 22
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/Platforms/Path2D4/PlatformPath/Hazard" unique_id=1718619454]
 position = Vector2(1, -83.5)

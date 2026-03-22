@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://ck4g4jxdvx0f8" path="res://resources/images/backgrounds/clouds_front.png" id="5_ytkhg"]
 [ext_resource type="Texture2D" uid="uid://yv5id2ccrcre" path="res://resources/images/backgrounds/plains.png" id="6_odxlg"]
 [ext_resource type="Script" uid="uid://cvgkus60jjudo" path="res://scenes/objects/moving_platform/platform_path.gd" id="7_issku"]
-[ext_resource type="PackedScene" uid="uid://ctnsho34vt00o" path="res://scenes/objects/moving_platform/platform_sprite.tscn" id="8_up0v7"]
+[ext_resource type="Texture2D" uid="uid://cwm8dpgf82asu" path="res://resources/images/sprites/rock.png" id="8_4xau6"]
+[ext_resource type="Texture2D" uid="uid://gi5xlh6o62ui" path="res://resources/images/sprites/platform.png" id="9_4xau6"]
 [ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/images/tilesets/dirt.tres" id="11_wlqsf"]
 [ext_resource type="PackedScene" uid="uid://wrvyh1hpnb7x" path="res://scenes/ui/pause_menu/pause_menu.tscn" id="15_x3a3q"]
 
@@ -261,7 +262,8 @@ max_temporal_offset = 10.0
 min_temporal_offset = -10.0
 metadata/_custom_type_script = "uid://cvgkus60jjudo"
 
-[node name="PlatformSprite" parent="Environment/Objects/PathObjects/Path2D/PlatformPath" unique_id=1011921266 instance=ExtResource("8_up0v7")]
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/PathObjects/Path2D/PlatformPath" unique_id=1091036260]
+texture = ExtResource("8_4xau6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/PathObjects/Path2D/PlatformPath" unique_id=508097582]
 shape = SubResource("RectangleShape2D_a46op")
@@ -280,7 +282,8 @@ max_temporal_offset = 30.0
 min_temporal_offset = -30.0
 metadata/_custom_type_script = "uid://cvgkus60jjudo"
 
-[node name="PlatformSprite" parent="Environment/Objects/PathObjects/Path2D2/PlatformPath" unique_id=416021299 instance=ExtResource("8_up0v7")]
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/PathObjects/Path2D2/PlatformPath" unique_id=1541329114]
+texture = ExtResource("8_4xau6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/PathObjects/Path2D2/PlatformPath" unique_id=353078910]
 shape = SubResource("RectangleShape2D_a46op")
@@ -297,7 +300,8 @@ max_temporal_offset = 10.0
 min_temporal_offset = -10.0
 metadata/_custom_type_script = "uid://cvgkus60jjudo"
 
-[node name="PlatformSprite" parent="Environment/Objects/PathObjects/Path2D3/PlatformPath" unique_id=713128562 instance=ExtResource("8_up0v7")]
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/PathObjects/Path2D3/PlatformPath" unique_id=1338744820]
+texture = ExtResource("9_4xau6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/PathObjects/Path2D3/PlatformPath" unique_id=1063904093]
 shape = SubResource("RectangleShape2D_a46op")
@@ -314,7 +318,8 @@ max_temporal_offset = 10.0
 min_temporal_offset = -10.0
 metadata/_custom_type_script = "uid://cvgkus60jjudo"
 
-[node name="PlatformSprite" parent="Environment/Objects/PathObjects/Path2D4/PlatformPath" unique_id=1790780078 instance=ExtResource("8_up0v7")]
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Objects/PathObjects/Path2D4/PlatformPath" unique_id=612979121]
+texture = ExtResource("9_4xau6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Objects/PathObjects/Path2D4/PlatformPath" unique_id=2118749066]
 shape = SubResource("RectangleShape2D_a46op")
