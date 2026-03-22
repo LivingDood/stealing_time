@@ -24,10 +24,8 @@ func _ready() -> void:
 func _decide_process_mode() -> void:
 	if ResourceUID.id_to_text(ResourceLoader.get_resource_uid(_scene.scene_file_path)) == main_menu_uid:
 		set_process(false)
-		print("not processing")
 	else:
 		set_process(true)
-		print("processing")
 
 func _on_scene_change() -> void:
 	_tree = get_tree()

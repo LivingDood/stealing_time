@@ -53,7 +53,6 @@ func _ready() -> void:
 func _on_state_finish(string:String):
 	if string == "death":
 		death_anim_finished.emit()
-		print(string)
 
 func _set_time_dependent_factors() -> void:
 	var t:float = PlayerStats.remaining_time
@@ -168,7 +167,6 @@ func _enter_state(state:int) -> void:
 			speed = 0
 			animation_state_machine.travel("death")
 			var anim_state:String = await tree.animation_finished
-			print(anim_state)
 			if anim_state == "death":
 				death_anim_finished.emit()
 			

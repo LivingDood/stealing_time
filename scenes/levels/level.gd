@@ -25,7 +25,6 @@ func _ready() -> void:
 		await animation_player.animation_finished
 		get_tree().paused = false
 	PlayerStats.paused = false
-	print(PlayerStats.paused)
 
 
 func go_to_next_level() -> void:

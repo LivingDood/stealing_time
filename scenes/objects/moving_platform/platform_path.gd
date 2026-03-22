@@ -77,7 +77,6 @@ func setup() -> void:
 	max_progress = path_follow.progress * (2. if boomerang else 1.)
 	progress = progress_ratio*max_progress
 	path_follow.progress = get_real_progress(progress)
-	print(path_follow.progress,progress)
 	_remote = RemoteTransform2D.new()
 	path_follow.add_child(_remote)
 	_remote.remote_path = _remote.get_path_to(self)
