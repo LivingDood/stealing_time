@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" uid="uid://fnlsjd58ahyw" path="res://scenes/levels/level.gd" id="1_7uxs1"]
 [ext_resource type="PackedScene" uid="uid://crtsrqp5yp1ik" path="res://scenes/character/character.tscn" id="1_v45ci"]
-[ext_resource type="Texture2D" uid="uid://sdwv8ridpewy" path="res://resources/images/backgrounds/sky.png" id="2_31rk5"]
+[ext_resource type="Texture2D" uid="uid://sdwv8ridpewy" path="res://assets/images/backgrounds/sky.png" id="2_31rk5"]
 [ext_resource type="Script" uid="uid://l0oay6hngdph" path="res://scenes/levels/follow_camera.gd" id="2_spwf2"]
 [ext_resource type="PackedScene" uid="uid://coxx2yn3347dq" path="res://scenes/objects/grow_object/grow_obj.tscn" id="3_6xh4u"]
-[ext_resource type="Texture2D" uid="uid://c1xxg7gjp8fmx" path="res://resources/images/backgrounds/clouds_back.png" id="3_w3g2g"]
+[ext_resource type="Texture2D" uid="uid://c1xxg7gjp8fmx" path="res://assets/images/backgrounds/clouds_back.png" id="3_w3g2g"]
 [ext_resource type="PackedScene" uid="uid://c1d4cgsnem67a" path="res://scenes/ui/hud.tscn" id="4_cyt5c"]
-[ext_resource type="Texture2D" uid="uid://c33pdoujp77ea" path="res://resources/images/backgrounds/mountains.png" id="4_napug"]
-[ext_resource type="Texture2D" uid="uid://ck4g4jxdvx0f8" path="res://resources/images/backgrounds/clouds_front.png" id="5_1jeig"]
-[ext_resource type="Texture2D" uid="uid://yv5id2ccrcre" path="res://resources/images/backgrounds/plains.png" id="6_hhmec"]
-[ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/images/tilesets/dirt.tres" id="7_w3g2g"]
-[ext_resource type="TileSet" uid="uid://dsk7as61obdu4" path="res://resources/images/tilesets/sign.tres" id="8_napug"]
+[ext_resource type="Texture2D" uid="uid://c33pdoujp77ea" path="res://assets/images/backgrounds/mountains.png" id="4_napug"]
+[ext_resource type="Texture2D" uid="uid://ck4g4jxdvx0f8" path="res://assets/images/backgrounds/clouds_front.png" id="5_1jeig"]
+[ext_resource type="Texture2D" uid="uid://yv5id2ccrcre" path="res://assets/images/backgrounds/plains.png" id="6_hhmec"]
+[ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/tilesets/dirt.tres" id="7_w3g2g"]
+[ext_resource type="TileSet" uid="uid://dsk7as61obdu4" path="res://resources/tilesets/sign.tres" id="8_napug"]
 
 [sub_resource type="Animation" id="Animation_papml"]
 length = 0.001
