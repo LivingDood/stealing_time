@@ -8,6 +8,10 @@ func enter() -> void:
 
 
 func update(_delta: float) -> void:
+	if _player.jump_component.is_falling:
+		_player.state_machine.change_state("fall")
+		return
+	
 	if _player.move_component.is_moving:
 		_player.state_machine.change_state("run")
 		return
