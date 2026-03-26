@@ -17,14 +17,16 @@ func _ready() -> void:
 	if traps:
 		for trap in traps:
 			trap.body_entered.connect(_on_traps_entered)
-	PlayerStats.set_time(initial_timer)
+	
 	await SceneManager.transition_finished
+	
 	if(animation_player.has_animation(&"intro")):
 		get_tree().paused = true
 		animation_player.play(&"intro")
 		await animation_player.animation_finished
 		get_tree().paused = false
-	PlayerStats.paused = false
+	#PlayerStats.set_time(initial_timer)
+	#PlayerStats.paused = false
 
 
 func go_to_next_level() -> void:
@@ -34,11 +36,12 @@ func go_to_next_level() -> void:
 
 
 func _on_exit_area_entered(_body: Node2D) -> void:
-	PlayerStats.paused = true
+	#PlayerStats.paused = true
 	SaveManager.unlock_level(next_level_id)
 	go_to_next_level()
 
 
 func _on_traps_entered(body: Node2D) -> void:
-	if body == PlayerStats.player:
-		PlayerStats.trigger_player_death()
+	pass
+	#if body == PlayerStats.player:
+		#PlayerStats.trigger_player_death()
