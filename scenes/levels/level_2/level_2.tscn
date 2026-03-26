@@ -1,22 +1,18 @@
 [gd_scene format=4 uid="uid://b2fhxdd3awyb2"]
 
 [ext_resource type="Script" uid="uid://fnlsjd58ahyw" path="res://scenes/levels/level.gd" id="1_f1k8i"]
-[ext_resource type="Texture2D" uid="uid://sdwv8ridpewy" path="res://resources/images/backgrounds/sky.png" id="2_4xau6"]
 [ext_resource type="Script" uid="uid://l0oay6hngdph" path="res://scenes/levels/follow_camera.gd" id="2_83l3i"]
 [ext_resource type="PackedScene" uid="uid://coxx2yn3347dq" path="res://scenes/objects/grow_object/grow_obj.tscn" id="2_hopjm"]
-[ext_resource type="PackedScene" uid="uid://crtsrqp5yp1ik" path="res://scenes/character/character.tscn" id="3_hopjm"]
-[ext_resource type="Texture2D" uid="uid://c1xxg7gjp8fmx" path="res://resources/images/backgrounds/clouds_back.png" id="3_slc34"]
-[ext_resource type="Texture2D" uid="uid://c33pdoujp77ea" path="res://resources/images/backgrounds/mountains.png" id="4_5owdk"]
+[ext_resource type="PackedScene" uid="uid://bxswuxnb52q1q" path="res://scenes/levels/background.tscn" id="2_up0v7"]
+[ext_resource type="PackedScene" uid="uid://crtsrqp5yp1ik" path="res://scenes/character/player_character.tscn" id="3_hopjm"]
 [ext_resource type="PackedScene" uid="uid://c1d4cgsnem67a" path="res://scenes/ui/hud.tscn" id="4_68es0"]
-[ext_resource type="Texture2D" uid="uid://ck4g4jxdvx0f8" path="res://resources/images/backgrounds/clouds_front.png" id="5_ytkhg"]
-[ext_resource type="Texture2D" uid="uid://yv5id2ccrcre" path="res://resources/images/backgrounds/plains.png" id="6_odxlg"]
 [ext_resource type="Script" uid="uid://cvgkus60jjudo" path="res://scenes/objects/moving_platform/platform_path.gd" id="7_issku"]
-[ext_resource type="Texture2D" uid="uid://cwm8dpgf82asu" path="res://resources/images/sprites/rock.png" id="8_4xau6"]
+[ext_resource type="Texture2D" uid="uid://cwm8dpgf82asu" path="res://assets/images/sprites/rock.png" id="8_4xau6"]
 [ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/highlight/highlight.gdshader" id="8_ytkhg"]
-[ext_resource type="Texture2D" uid="uid://gi5xlh6o62ui" path="res://resources/images/sprites/platform.png" id="9_4xau6"]
-[ext_resource type="Script" uid="uid://dtfqqdy7fd5jm" path="res://Scenes/objects/moving_platform/door_activation.gd" id="11_5owdk"]
-[ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/images/tilesets/dirt.tres" id="11_wlqsf"]
-[ext_resource type="TileSet" uid="uid://dsk7as61obdu4" path="res://resources/images/tilesets/sign.tres" id="12_slc34"]
+[ext_resource type="Texture2D" uid="uid://gi5xlh6o62ui" path="res://assets/images/sprites/platform.png" id="9_4xau6"]
+[ext_resource type="Script" uid="uid://dtfqqdy7fd5jm" path="res://scenes/objects/moving_platform/door_activation.gd" id="11_5owdk"]
+[ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/tilesets/dirt.tres" id="11_wlqsf"]
+[ext_resource type="TileSet" uid="uid://dsk7as61obdu4" path="res://resources/tilesets/sign.tres" id="12_slc34"]
 [ext_resource type="PackedScene" uid="uid://wrvyh1hpnb7x" path="res://scenes/ui/pause_menu/pause_menu.tscn" id="15_x3a3q"]
 
 [sub_resource type="Animation" id="Animation_papml"]
@@ -60,7 +56,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Character:process_mode")
+tracks/3/path = NodePath("PlayerCharacter:process_mode")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -112,7 +108,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Character:process_mode")
+tracks/3/path = NodePath("PlayerCharacter:process_mode")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -197,54 +193,7 @@ libraries/ = SubResource("AnimationLibrary_yxxbu")
 [node name="Environment" type="Node2D" parent="." unique_id=599037856]
 metadata/_edit_lock_ = true
 
-[node name="Background" type="Node2D" parent="Environment" unique_id=1635415056]
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="Sky" type="Parallax2D" parent="Environment/Background" unique_id=329928806]
-scroll_scale = Vector2(0, 0)
-repeat_size = Vector2(1280, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Environment/Background/Sky" unique_id=1968531431]
-texture = ExtResource("2_4xau6")
-centered = false
-
-[node name="CloudsBack" type="Parallax2D" parent="Environment/Background" unique_id=1856279194]
-scroll_scale = Vector2(0.2, 0.2)
-repeat_size = Vector2(1280, 0)
-autoscroll = Vector2(-4, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Environment/Background/CloudsBack" unique_id=2131765693]
-texture = ExtResource("3_slc34")
-centered = false
-
-[node name="Mountains" type="Parallax2D" parent="Environment/Background" unique_id=1146721417]
-scroll_scale = Vector2(0.2, 0.2)
-repeat_size = Vector2(1280, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Environment/Background/Mountains" unique_id=407209287]
-texture = ExtResource("4_5owdk")
-centered = false
-
-[node name="CloudsFront" type="Parallax2D" parent="Environment/Background" unique_id=1663376983]
-scroll_scale = Vector2(0.6, 0.6)
-repeat_size = Vector2(1280, 0)
-autoscroll = Vector2(-16, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Environment/Background/CloudsFront" unique_id=554152601]
-texture = ExtResource("5_ytkhg")
-centered = false
-
-[node name="Plains" type="Parallax2D" parent="Environment/Background" unique_id=413698422]
-scroll_scale = Vector2(0.4, 0.4)
-repeat_size = Vector2(1280, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Environment/Background/Plains" unique_id=21473061]
-texture = ExtResource("6_odxlg")
-centered = false
-
-[node name="Colliders" type="StaticBody2D" parent="Environment" unique_id=1536253596]
-metadata/_edit_lock_ = true
+[node name="Background" parent="Environment" unique_id=1678283593 instance=ExtResource("2_up0v7")]
 
 [node name="Objects" type="Node2D" parent="Environment" unique_id=1663960372]
 metadata/_edit_lock_ = true
@@ -388,16 +337,11 @@ limit_top = 0
 limit_right = 4608
 limit_bottom = 648
 script = ExtResource("2_83l3i")
-target = NodePath("../Character")
+target = NodePath("../PlayerCharacter")
 metadata/_edit_lock_ = true
 
-[node name="Character" parent="." unique_id=47124019 instance=ExtResource("3_hopjm")]
+[node name="PlayerCharacter" parent="." unique_id=47124019 instance=ExtResource("3_hopjm")]
 position = Vector2(84, 495)
-jump_height = 160.0
-slowing_threshold_time = 65.0
-max_slow_time = 110.0
-min_speed_scale = 0.308
-shrinking_threshold_time = 20
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1362938602]
 

@@ -1,0 +1,290 @@
+[gd_scene format=3 uid="uid://crtsrqp5yp1ik"]
+
+[ext_resource type="Script" uid="uid://dhhwpjhk1a03n" path="res://scenes/character/player_character.gd" id="1_tum32"]
+[ext_resource type="Texture2D" uid="uid://c6y4wdoiu8vap" path="res://assets/images/sprites/character_adult.png" id="2_0vjlc"]
+[ext_resource type="Script" uid="uid://bhj60r6tbls8o" path="res://scenes/character/component/input_component.gd" id="2_gu13i"]
+[ext_resource type="Script" uid="uid://dqs1nqlqn5x1e" path="res://scenes/character/component/age_data.gd" id="2_qehiu"]
+[ext_resource type="Script" uid="uid://bog4adiq3hvf0" path="res://scenes/character/component/move_component.gd" id="3_m1kf6"]
+[ext_resource type="Script" uid="uid://bo3skq8k63lvd" path="res://scenes/character/component/age_component.gd" id="3_vjh6n"]
+[ext_resource type="Script" uid="uid://b3qvbsj382oh0" path="res://scenes/character/component/direction_component.gd" id="3_vpaan"]
+[ext_resource type="Script" uid="uid://cchj0n0f7x8nr" path="res://scenes/character/component/time_component.gd" id="4_an8r1"]
+[ext_resource type="Script" uid="uid://b5l56rvkeu4qe" path="res://scenes/character/component/jump_component.gd" id="4_c3hal"]
+[ext_resource type="Script" uid="uid://tnr2qcbwgjiu" path="res://scenes/character/player_state_machine.gd" id="5_gu13i"]
+[ext_resource type="Texture2D" uid="uid://okfwcwc37nbh" path="res://assets/images/sprites/character_old.png" id="6_5rb1q"]
+[ext_resource type="Script" uid="uid://cqcg5ryg6h70" path="res://scenes/character/component/aim_component.gd" id="6_77sxg"]
+[ext_resource type="Script" uid="uid://cdtl62gp8q4wi" path="res://scenes/character/state/player_state.gd" id="6_m1kf6"]
+[ext_resource type="AudioStream" uid="uid://cuwsippdomlx5" path="res://assets/sounds/particle/particle_inverted.ogg" id="7_06x2p"]
+[ext_resource type="Script" uid="uid://jjynk8j6ud5b" path="res://scenes/character/component/steal_component.gd" id="7_p75vh"]
+[ext_resource type="AudioStream" uid="uid://unidy1l0v27t" path="res://assets/sounds/particle/particle.ogg" id="8_06x2p"]
+[ext_resource type="Texture2D" uid="uid://dcqystqtmwep1" path="res://assets/images/sprites/character_teen.png" id="8_lo1wj"]
+[ext_resource type="Texture2D" uid="uid://b3t32q6pj1enq" path="res://assets/images/sprites/character_child.png" id="9_0upq2"]
+[ext_resource type="Script" uid="uid://bb4cn3vn2kq7m" path="res://scenes/character/state/idle_state.gd" id="14_liifm"]
+[ext_resource type="Script" uid="uid://cw6bqog2wy8o1" path="res://scenes/character/state/run_state.gd" id="15_e71uw"]
+[ext_resource type="Script" uid="uid://4h3xo53cxvqh" path="res://scenes/character/state/jump_state.gd" id="16_td4he"]
+[ext_resource type="Script" uid="uid://buf8yo2gb08uk" path="res://scenes/character/state/dead_state.gd" id="17_e71uw"]
+[ext_resource type="Script" uid="uid://6qw2h8yu4ydb" path="res://scenes/character/state/fall_state.gd" id="18_4os47"]
+[ext_resource type="Script" uid="uid://c3jf23a3wdvij" path="res://scenes/character/state/land_state.gd" id="19_vpaan"]
+
+[sub_resource type="Resource" id="Resource_0upq2"]
+script = ExtResource("2_gu13i")
+left_action = &"left"
+right_action = &"right"
+jump_action = &"jump"
+steal_action = &"steal"
+give_action = &"give"
+metadata/_custom_type_script = "uid://bhj60r6tbls8o"
+
+[sub_resource type="Resource" id="Resource_jk8qn"]
+script = ExtResource("3_vpaan")
+metadata/_custom_type_script = "uid://b3qvbsj382oh0"
+
+[sub_resource type="Resource" id="Resource_liifm"]
+script = ExtResource("3_m1kf6")
+metadata/_custom_type_script = "uid://bog4adiq3hvf0"
+
+[sub_resource type="Resource" id="Resource_e71uw"]
+script = ExtResource("4_c3hal")
+metadata/_custom_type_script = "uid://b5l56rvkeu4qe"
+
+[sub_resource type="Resource" id="Resource_aq0g2"]
+script = ExtResource("6_77sxg")
+metadata/_custom_type_script = "uid://cqcg5ryg6h70"
+
+[sub_resource type="Resource" id="Resource_c27og"]
+script = ExtResource("7_p75vh")
+steal_sfx = ExtResource("8_06x2p")
+give_sfx = ExtResource("7_06x2p")
+metadata/_custom_type_script = "uid://jjynk8j6ud5b"
+
+[sub_resource type="Resource" id="Resource_td4he"]
+script = ExtResource("2_qehiu")
+category_name = &"senior"
+min_time = 45.0
+texture = ExtResource("6_5rb1q")
+metadata/_custom_type_script = "uid://dqs1nqlqn5x1e"
+
+[sub_resource type="Resource" id="Resource_4os47"]
+script = ExtResource("2_qehiu")
+category_name = &"adult"
+min_time = 25.0
+texture = ExtResource("2_0vjlc")
+metadata/_custom_type_script = "uid://dqs1nqlqn5x1e"
+
+[sub_resource type="Resource" id="Resource_vpaan"]
+script = ExtResource("2_qehiu")
+category_name = &"youth"
+min_time = 10.0
+texture = ExtResource("8_lo1wj")
+metadata/_custom_type_script = "uid://dqs1nqlqn5x1e"
+
+[sub_resource type="Resource" id="Resource_x0vj5"]
+script = ExtResource("2_qehiu")
+category_name = &"child"
+texture = ExtResource("9_0upq2")
+metadata/_custom_type_script = "uid://dqs1nqlqn5x1e"
+
+[sub_resource type="Resource" id="Resource_c3hal"]
+script = ExtResource("3_vjh6n")
+ages = Array[ExtResource("2_qehiu")]([SubResource("Resource_td4he"), SubResource("Resource_4os47"), SubResource("Resource_vpaan"), SubResource("Resource_x0vj5")])
+metadata/_custom_type_script = "uid://bo3skq8k63lvd"
+
+[sub_resource type="Resource" id="Resource_5rb1q"]
+script = ExtResource("4_an8r1")
+time = 60.0
+metadata/_custom_type_script = "uid://cchj0n0f7x8nr"
+
+[sub_resource type="Resource" id="Resource_06x2p"]
+script = ExtResource("17_e71uw")
+metadata/_custom_type_script = "uid://buf8yo2gb08uk"
+
+[sub_resource type="Resource" id="Resource_aw82u"]
+script = ExtResource("18_4os47")
+metadata/_custom_type_script = "uid://6qw2h8yu4ydb"
+
+[sub_resource type="Resource" id="Resource_nefp4"]
+script = ExtResource("14_liifm")
+metadata/_custom_type_script = "uid://bb4cn3vn2kq7m"
+
+[sub_resource type="Resource" id="Resource_p75vh"]
+script = ExtResource("16_td4he")
+metadata/_custom_type_script = "uid://4h3xo53cxvqh"
+
+[sub_resource type="Resource" id="Resource_rnaat"]
+script = ExtResource("19_vpaan")
+metadata/_custom_type_script = "uid://c3jf23a3wdvij"
+
+[sub_resource type="Resource" id="Resource_77sxg"]
+script = ExtResource("15_e71uw")
+metadata/_custom_type_script = "uid://cw6bqog2wy8o1"
+
+[sub_resource type="Resource" id="Resource_lo1wj"]
+script = ExtResource("5_gu13i")
+state_map = Dictionary[StringName, ExtResource("6_m1kf6")]({
+&"dead": SubResource("Resource_06x2p"),
+&"fall": SubResource("Resource_aw82u"),
+&"idle": SubResource("Resource_nefp4"),
+&"jump": SubResource("Resource_p75vh"),
+&"land": SubResource("Resource_rnaat"),
+&"run": SubResource("Resource_77sxg")
+})
+metadata/_custom_type_script = "uid://tnr2qcbwgjiu"
+
+[sub_resource type="Animation" id="Animation_mutn8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q52vl"]
+resource_name = "death"
+length = 0.25
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_fgi2k"]
+resource_name = "fall"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_f8hpl"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_7ex5l"]
+resource_name = "jump"
+length = 0.1875
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_bix7t"]
+resource_name = "land"
+length = 0.125
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0625),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_bblvu"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q52vl"]
+_data = {
+&"RESET": SubResource("Animation_mutn8"),
+&"death": SubResource("Animation_q52vl"),
+&"fall": SubResource("Animation_fgi2k"),
+&"idle": SubResource("Animation_f8hpl"),
+&"jump": SubResource("Animation_7ex5l"),
+&"land": SubResource("Animation_bix7t"),
+&"run": SubResource("Animation_bblvu")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ushfy"]
+radius = 16.0
+height = 100.0
+
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=47124019 node_paths=PackedStringArray("sprite", "animation_player")]
+collision_mask = 3
+script = ExtResource("1_tum32")
+sprite = NodePath("Sprite2D")
+animation_player = NodePath("AnimationPlayer")
+input_component = SubResource("Resource_0upq2")
+direction_component = SubResource("Resource_jk8qn")
+move_component = SubResource("Resource_liifm")
+jump_component = SubResource("Resource_e71uw")
+aim_component = SubResource("Resource_aq0g2")
+steal_component = SubResource("Resource_c27og")
+age_component = SubResource("Resource_c3hal")
+time_component = SubResource("Resource_5rb1q")
+state_machine = SubResource("Resource_lo1wj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=944747217]
+libraries/ = SubResource("AnimationLibrary_q52vl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1903765647]
+texture = ExtResource("2_0vjlc")
+hframes = 6
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066918363]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_ushfy")
