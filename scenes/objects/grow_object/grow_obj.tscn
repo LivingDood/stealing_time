@@ -15,7 +15,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:polygon")
+tracks/0/path = NodePath("CollisionPolygon2D:polygon")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,6 +36,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_iupk5"]
 resource_name = "grow"
@@ -43,7 +55,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:polygon")
+tracks/0/path = NodePath("CollisionPolygon2D:polygon")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,10 +71,22 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.33, 0.67, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0001, 0.329, 0.33, 0.669, 0.67, 0.999, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 0, 1, 2, 3]
+"values": [0, 0, 0, 1, 1, 2, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.329, 0.33, 0.669, 0.67, 0.999, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t2okv"]
@@ -78,15 +102,15 @@ script = ExtResource("1_v1jtv")
 sprite = NodePath("Sprite2D")
 animation_player = NodePath("AnimationPlayer")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1255144793]
-polygon = PackedVector2Array(-20, 64, -20, -32, -64, -48, 64, -48, 20, -32, 20, 64)
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=202794022]
 material = SubResource("ShaderMaterial_rrk06")
 texture = ExtResource("3_dtpy6")
-centered = false
-offset = Vector2(-128, -192)
+offset = Vector2(0, -128)
 hframes = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1255144793]
+position = Vector2(0, -64)
+polygon = PackedVector2Array(-20, 64, -20, -32, -64, -48, 64, -48, 20, -32, 20, 64)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1810403594]
 libraries/ = SubResource("AnimationLibrary_t2okv")
