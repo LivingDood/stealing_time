@@ -133,27 +133,27 @@ navigation_enabled = false
 metadata/_edit_lock_ = true
 
 [node name="GrowObj" parent="Environment/Objects" unique_id=1900398055 instance=ExtResource("2_pcaiw")]
-position = Vector2(901, 544)
+position = Vector2(901, 608)
 initial_progress = 1.0
 
 [node name="GrowObj2" parent="Environment/Objects" unique_id=1061055209 instance=ExtResource("2_pcaiw")]
-position = Vector2(1679, 544)
+position = Vector2(1679, 608)
 initial_progress = 1.0
 
 [node name="GrowObj3" parent="Environment/Objects" unique_id=975831933 instance=ExtResource("2_pcaiw")]
-position = Vector2(2268, 288)
+position = Vector2(2268, 352)
 initial_progress = 1.0
 
 [node name="GrowObj4" parent="Environment/Objects" unique_id=1929540872 instance=ExtResource("2_pcaiw")]
-position = Vector2(2514, 288)
+position = Vector2(2514, 352)
 initial_progress = 1.0
 
 [node name="GrowObj5" parent="Environment/Objects" unique_id=1317380532 instance=ExtResource("2_pcaiw")]
-position = Vector2(2765, 288)
+position = Vector2(2765, 352)
 initial_progress = 1.0
 
 [node name="GrowObj6" parent="Environment/Objects" unique_id=1360952698 instance=ExtResource("2_pcaiw")]
-position = Vector2(3015, 288)
+position = Vector2(3015, 352)
 initial_progress = 1.0
 
 [node name="ExitArea" type="Area2D" parent="Environment" unique_id=2146477806]
