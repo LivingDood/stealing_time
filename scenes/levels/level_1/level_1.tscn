@@ -181,35 +181,35 @@ navigation_enabled = false
 metadata/_edit_lock_ = true
 
 [node name="GrowObj" parent="Environment/Objects" unique_id=1900398055 instance=ExtResource("3_6xh4u")]
-position = Vector2(306, 542)
+position = Vector2(306, 606)
 initial_progress = 1.0
 
 [node name="GrowObj2" parent="Environment/Objects" unique_id=1880622114 instance=ExtResource("3_6xh4u")]
-position = Vector2(921, 542)
+position = Vector2(921, 606)
 
 [node name="GrowObj3" parent="Environment/Objects" unique_id=1264538679 instance=ExtResource("3_6xh4u")]
-position = Vector2(1505, 543)
+position = Vector2(1505, 607)
 
 [node name="GrowObj4" parent="Environment/Objects" unique_id=1809852139 instance=ExtResource("3_6xh4u")]
-position = Vector2(1788, 352)
+position = Vector2(1788, 416)
 initial_progress = 1.0
 
 [node name="GrowObj5" parent="Environment/Objects" unique_id=1795831998 instance=ExtResource("3_6xh4u")]
-position = Vector2(2368, 352)
+position = Vector2(2368, 416)
 initial_progress = 1.0
 
 [node name="GrowObj6" parent="Environment/Objects" unique_id=1649323291 instance=ExtResource("3_6xh4u")]
-position = Vector2(2575, 544)
+position = Vector2(2575, 608)
 initial_progress = 1.0
 
 [node name="GrowObj7" parent="Environment/Objects" unique_id=2136053801 instance=ExtResource("3_6xh4u")]
-position = Vector2(3005, 544)
+position = Vector2(3005, 608)
 
 [node name="GrowObj8" parent="Environment/Objects" unique_id=922592970 instance=ExtResource("3_6xh4u")]
-position = Vector2(3415, 544)
+position = Vector2(3415, 608)
 
 [node name="GrowObj9" parent="Environment/Objects" unique_id=1417245666 instance=ExtResource("3_6xh4u")]
-position = Vector2(3786, 544)
+position = Vector2(3786, 608)
 
 [node name="ExitArea" type="Area2D" parent="Environment" unique_id=1444776350]
 position = Vector2(4352, 768)
