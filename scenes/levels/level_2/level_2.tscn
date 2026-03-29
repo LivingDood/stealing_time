@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1d4cgsnem67a" path="res://scenes/ui/hud.tscn" id="4_68es0"]
 [ext_resource type="Script" uid="uid://cvgkus60jjudo" path="res://scenes/objects/moving_platform/platform_path.gd" id="7_issku"]
 [ext_resource type="Texture2D" uid="uid://cwm8dpgf82asu" path="res://assets/images/sprites/rock.png" id="8_4xau6"]
-[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/highlight/highlight.gdshader" id="8_ytkhg"]
+[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/outline/outline.gdshader" id="8_ytkhg"]
 [ext_resource type="Texture2D" uid="uid://gi5xlh6o62ui" path="res://assets/images/sprites/platform.png" id="9_4xau6"]
 [ext_resource type="Script" uid="uid://dtfqqdy7fd5jm" path="res://scenes/objects/moving_platform/door_activation.gd" id="11_5owdk"]
 [ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/tilesets/dirt.tres" id="11_wlqsf"]

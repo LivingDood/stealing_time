@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://yv5id2ccrcre" path="res://assets/images/backgrounds/plains.png" id="6_5ymxc"]
 [ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/tilesets/dirt.tres" id="6_yxxbu"]
 [ext_resource type="Texture2D" uid="uid://gi5xlh6o62ui" path="res://assets/images/sprites/platform.png" id="9_ah86r"]
-[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/highlight/highlight.gdshader" id="9_g0m7m"]
+[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/outline/outline.gdshader" id="9_g0m7m"]
 [ext_resource type="Texture2D" uid="uid://b6wjt4egqc35f" path="res://assets/images/tilesets/dirt.png" id="10_drns5"]
 [ext_resource type="TileSet" uid="uid://dsk7as61obdu4" path="res://resources/tilesets/sign.tres" id="12_nd7a6"]
 

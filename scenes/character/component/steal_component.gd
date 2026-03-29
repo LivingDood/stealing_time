@@ -12,14 +12,14 @@ func update(player: PlayerCharacter, delta: float) -> void:
 		var new_target = player.aim_component.target
 		if new_target != target:
 			if target:
-				target.set_highlight(false)
+				target.set_outline(false)
 		target = new_target
 	elif target:
-		target.set_highlight(false)
+		target.set_outline(false)
 		target = null
 	
 	if target:
-		target.set_highlight(true)
+		target.set_outline(true)
 		if player.input_component.steal_pressed:
 			if target.steal(delta) > 0.0:
 				player.time_component.add(delta)

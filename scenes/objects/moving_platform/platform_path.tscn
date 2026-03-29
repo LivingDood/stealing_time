@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvgkus60jjudo" path="res://scenes/objects/moving_platform/platform_path.gd" id="1_ti5e4"]
 [ext_resource type="Texture2D" uid="uid://j63toosxu5jo" path="res://icon.svg" id="2_daxat"]
-[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/highlight/highlight.gdshader" id="2_my54y"]
+[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/outline/outline.gdshader" id="2_my54y"]
 
 [sub_resource type="Curve2D" id="Curve2D_1sdbv"]
 bake_interval = 20.0

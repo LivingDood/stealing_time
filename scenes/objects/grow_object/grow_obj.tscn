@@ -1,14 +1,13 @@
 [gd_scene format=3 uid="uid://coxx2yn3347dq"]
 
 [ext_resource type="Script" uid="uid://2ekv3r45yhc3" path="res://scenes/objects/grow_object/grow_obj.gd" id="1_v1jtv"]
-[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/highlight/highlight.gdshader" id="2_rrk06"]
+[ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/outline/outline.gdshader" id="2_rrk06"]
 [ext_resource type="Texture2D" uid="uid://b3dh3g2txw88j" path="res://assets/images/sprites/mushroom.png" id="3_dtpy6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rrk06"]
 shader = ExtResource("2_rrk06")
-shader_parameter/outline_thickness = 2.0000000298024
-shader_parameter/anti_alias_amount = 2.0
-shader_parameter/outline_colour = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 2.0
 
 [sub_resource type="Animation" id="Animation_rrk06"]
 length = 0.001
