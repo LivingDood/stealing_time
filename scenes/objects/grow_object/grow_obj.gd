@@ -39,5 +39,5 @@ func give(seconds: float) -> float:
 	return 0.0
 
 
-func set_highlight(enabled: bool) -> void:
+func set_outline(enabled: bool) -> void:
 	sprite.set_instance_shader_parameter("is_enabled", enabled)

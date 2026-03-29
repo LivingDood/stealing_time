@@ -176,5 +176,5 @@ func unpause() -> void:
 	_paused = false
 
 var transferring:bool = false
-func set_highlight(enabled:bool) -> void:
+func set_outline(enabled:bool) -> void:
 	_sprite.set_instance_shader_parameter("is_enabled",enabled)

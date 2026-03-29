@@ -14,4 +14,4 @@ func give(seconds: float) -> float
 
 
 @abstract
-func set_highlight(enabled: bool) -> void
+func set_outline(enabled: bool) -> void
