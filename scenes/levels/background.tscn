@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://yv5id2ccrcre" path="res://assets/images/backgrounds/plains.png" id="5_2uvrh"]
 
 [node name="Background" type="Node2D" unique_id=1678283593]
-modulate = Color(0.85814106, 0.85814106, 0.85814106, 1)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
