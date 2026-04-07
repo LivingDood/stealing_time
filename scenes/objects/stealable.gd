@@ -2,6 +2,8 @@
 class_name Stealable
 extends AnimatableBody2D
 
+@export var marker: Marker2D
+
 var time_transfer_multiplier: float = 1.0
 
 

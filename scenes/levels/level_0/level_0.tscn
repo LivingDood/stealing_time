@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://crtsrqp5yp1ik" path="res://scenes/character/player_character.tscn" id="2_w7xqs"]
 [ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/tilesets/dirt.tres" id="7_e1yj7"]
 [ext_resource type="TileSet" uid="uid://dsk7as61obdu4" path="res://resources/tilesets/sign.tres" id="8_cbw00"]
+[ext_resource type="PackedScene" uid="uid://c1d4cgsnem67a" path="res://scenes/ui/hud.tscn" id="8_ssous"]
+[ext_resource type="PackedScene" uid="uid://dk1185t8vnr3p" path="res://scenes/ui/time_container/time_container.tscn" id="9_aeg4k"]
+[ext_resource type="PackedScene" uid="uid://cx0ku23srwvur" path="res://scenes/ui/mobile_controls/mobile_controls.tscn" id="10_d1lse"]
 
 [sub_resource type="Animation" id="Animation_papml"]
 length = 0.001
@@ -45,6 +48,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Hud:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/TimeContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_4x8ai"]
@@ -86,6 +113,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Hud:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.01, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/TimeContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_papml"]
 _data = {
@@ -96,13 +147,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4x8ai"]
 size = Vector2(512, 128)
 
-[node name="Level0" type="Node2D" unique_id=329832045 node_paths=PackedStringArray("animation_player", "exit_area")]
+[node name="Level0" type="Node2D" unique_id=329832045 node_paths=PackedStringArray("animation_player", "exit_area", "player", "mobile_controls")]
 script = ExtResource("1_e1xyi")
 next_level_id = 1
 next_level_path = "uid://cjihvxocx4n42"
 initial_timer = 30.0
 animation_player = NodePath("AnimationPlayer")
 exit_area = NodePath("Environment/ExitArea")
+player = NodePath("PlayerCharacter")
+mobile_controls = NodePath("CanvasLayer/MobileControls")
 metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=921312593]
@@ -180,6 +233,13 @@ position = Vector2(288, -128)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1374405904]
 
+[node name="TimeContainer" parent="CanvasLayer" unique_id=1613852043 node_paths=PackedStringArray("player") instance=ExtResource("9_aeg4k")]
+visible = false
+player = NodePath("../../PlayerCharacter")
+
+[node name="MobileControls" parent="CanvasLayer" unique_id=994785595 instance=ExtResource("10_d1lse")]
+visible = false
+
 [node name="CinematicBars" type="Control" parent="CanvasLayer" unique_id=1936585724]
 layout_mode = 3
 anchors_preset = 15
@@ -210,3 +270,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Hud" parent="CanvasLayer" unique_id=1546810575 node_paths=PackedStringArray("player") instance=ExtResource("8_ssous")]
+visible = false
+player = NodePath("../../PlayerCharacter")

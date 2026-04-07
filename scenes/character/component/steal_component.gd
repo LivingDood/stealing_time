@@ -7,7 +7,7 @@ extends Resource
 var target: Stealable
 
 
-func update(player: PlayerCharacter, delta: float) -> void:
+func update(player: PlayerCharacter, delta: float, is_steal_pressed: bool, is_give_pressed: bool) -> void:
 	if player.aim_component.target is Stealable:
 		var new_target = player.aim_component.target
 		if new_target != target:
@@ -20,11 +20,11 @@ func update(player: PlayerCharacter, delta: float) -> void:
 	
 	if target:
 		target.set_outline(true)
-		if player.input_component.steal_pressed:
+		if is_steal_pressed:
 			if target.steal(delta) > 0.0:
 				player.time_component.add(delta)
-				ParticleManager.generate(target.global_position, player, steal_sfx)
-		elif player.input_component.give_pressed:
+				ParticleManager.generate(target.marker.global_position, player, steal_sfx)
+		elif is_give_pressed:
 			if target.give(delta) > 0.0:
 				player.time_component.remove(delta)
-				ParticleManager.generate(player.global_position, target, give_sfx)
+				ParticleManager.generate(player.global_position, target.marker, give_sfx)

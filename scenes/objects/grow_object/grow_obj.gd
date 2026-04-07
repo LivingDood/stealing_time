@@ -14,8 +14,6 @@ extends Stealable
 @export var sprite: Sprite2D
 @export var animation_player: AnimationPlayer
 
-var is_hovered: bool = false
-
 
 func _ready() -> void:
 	animation_player.play(&"grow")

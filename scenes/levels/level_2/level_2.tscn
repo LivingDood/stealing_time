@@ -132,9 +132,9 @@ point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odxlg"]
 shader = ExtResource("8_ytkhg")
-shader_parameter/outline_thickness = 5.0
-shader_parameter/anti_alias_amount = 1.0
-shader_parameter/outline_colour = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 2.0
+shader_parameter/alpha_threshold = 0.99
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a46op"]
 size = Vector2(128, 128)
@@ -147,9 +147,9 @@ point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_issku"]
 shader = ExtResource("8_ytkhg")
-shader_parameter/outline_thickness = 5.0
-shader_parameter/anti_alias_amount = 1.0
-shader_parameter/outline_colour = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 2.0
+shader_parameter/alpha_threshold = 0.99
 
 [sub_resource type="Curve2D" id="Curve2D_acoyq"]
 _data = {
@@ -159,15 +159,15 @@ point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sfxq0"]
 shader = ExtResource("8_ytkhg")
-shader_parameter/outline_thickness = 5.0
-shader_parameter/anti_alias_amount = 1.0
-shader_parameter/outline_colour = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 2.0
+shader_parameter/alpha_threshold = 0.99
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekcpv"]
 shader = ExtResource("8_ytkhg")
-shader_parameter/outline_thickness = 5.0
-shader_parameter/anti_alias_amount = 1.0
-shader_parameter/outline_colour = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 2.0
+shader_parameter/alpha_threshold = 0.99
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5owdk"]
 size = Vector2(139, 118)

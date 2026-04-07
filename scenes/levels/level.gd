@@ -11,8 +11,13 @@ extends Node
 @export var exit_area: Area2D
 @export var traps: Array[Area2D]
 
+@export var player: PlayerCharacter
+@export var mobile_controls: Control
+
 
 func _ready() -> void:
+	player.can_act = false
+	
 	exit_area.body_entered.connect(_on_exit_area_entered)
 	if traps:
 		for trap in traps:
@@ -21,12 +26,16 @@ func _ready() -> void:
 	await SceneManager.transition_finished
 	
 	if(animation_player.has_animation(&"intro")):
-		get_tree().paused = true
 		animation_player.play(&"intro")
 		await animation_player.animation_finished
-		get_tree().paused = false
-	#PlayerStats.set_time(initial_timer)
-	#PlayerStats.paused = false
+	
+	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		mobile_controls.show()
+	else:
+		mobile_controls.hide()
+	
+	player.set_time(initial_timer)
+	player.can_act = true
 
 
 func go_to_next_level() -> void:
@@ -36,12 +45,11 @@ func go_to_next_level() -> void:
 
 
 func _on_exit_area_entered(_body: Node2D) -> void:
-	#PlayerStats.paused = true
+	player.can_act = false
 	SaveManager.unlock_level(next_level_id)
 	go_to_next_level()
 
 
 func _on_traps_entered(body: Node2D) -> void:
-	pass
-	#if body == PlayerStats.player:
-		#PlayerStats.trigger_player_death()
+	if body == player:
+		player.kill()

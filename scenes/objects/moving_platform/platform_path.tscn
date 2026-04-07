@@ -16,9 +16,9 @@ size = Vector2(128, 128)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkh7w"]
 shader = ExtResource("2_my54y")
-shader_parameter/outline_thickness = 5.0
-shader_parameter/anti_alias_amount = 1.0
-shader_parameter/outline_colour = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 2.0
+shader_parameter/alpha_threshold = 0.99
 
 [node name="PlatformPath" type="Path2D" unique_id=1366809630]
 curve = SubResource("Curve2D_1sdbv")

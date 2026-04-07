@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cx0ku23srwvur"]
+
+[sub_resource type="Gradient" id="Gradient_gwha6"]
+colors = PackedColorArray(0.101960786, 0.101960786, 0.101960786, 0.6, 0.101960786, 0.101960786, 0.101960786, 0.6)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gwha6"]
+gradient = SubResource("Gradient_gwha6")
+width = 96
+height = 96
+
+[sub_resource type="Gradient" id="Gradient_fv0ut"]
+colors = PackedColorArray(0, 0, 0, 0.6, 0, 0, 0, 0.6)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fv0ut"]
+gradient = SubResource("Gradient_fv0ut")
+width = 96
+height = 96
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4442d"]
+size = Vector2(96, 96)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m1ja8"]
+gradient = SubResource("Gradient_gwha6")
+width = 96
+height = 96
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_obh40"]
+gradient = SubResource("Gradient_fv0ut")
+width = 96
+height = 96
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obh40"]
+size = Vector2(96, 96)
+
+[node name="MobileControls" type="Control" unique_id=994785595]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="LeftButton" type="TouchScreenButton" parent="." unique_id=2022559177]
+position = Vector2(64, 504)
+texture_normal = SubResource("GradientTexture2D_gwha6")
+texture_pressed = SubResource("GradientTexture2D_fv0ut")
+shape = SubResource("RectangleShape2D_4442d")
+passby_press = true
+action = "left"
+
+[node name="Control" type="Control" parent="LeftButton" unique_id=1461002015]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightButton" type="TouchScreenButton" parent="." unique_id=486008406]
+position = Vector2(192, 504)
+texture_normal = SubResource("GradientTexture2D_gwha6")
+texture_pressed = SubResource("GradientTexture2D_fv0ut")
+shape = SubResource("RectangleShape2D_4442d")
+passby_press = true
+action = "right"
+
+[node name="Control" type="Control" parent="RightButton" unique_id=96905126]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JumpButton" type="TouchScreenButton" parent="." unique_id=511976702]
+position = Vector2(992, 504)
+texture_normal = SubResource("GradientTexture2D_m1ja8")
+texture_pressed = SubResource("GradientTexture2D_obh40")
+shape = SubResource("RectangleShape2D_obh40")
+action = "jump"
+
+[node name="Control" type="Control" parent="JumpButton" unique_id=109708057]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2

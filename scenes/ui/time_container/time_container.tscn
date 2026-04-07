@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dk1185t8vnr3p"]
+
+[ext_resource type="Script" uid="uid://cls5udal7ftkt" path="res://scenes/ui/time_container/time_container.gd" id="1_861mk"]
+
+[node name="TimeContainer" type="MarginContainer" unique_id=1613852043 node_paths=PackedStringArray("progress")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 144.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 256
+script = ExtResource("1_861mk")
+progress = NodePath("TimeBar")
+metadata/_edit_lock_ = true
+
+[node name="TimeBar" type="ProgressBar" parent="." unique_id=1085660893]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+mouse_filter = 2
+max_value = 70.0
+show_percentage = false

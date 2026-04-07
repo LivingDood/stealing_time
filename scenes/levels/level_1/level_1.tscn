@@ -124,7 +124,7 @@ size = Vector2(1472, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmhy7"]
 size = Vector2(512, 128)
 
-[node name="Level1" type="Node2D" unique_id=1029438254 node_paths=PackedStringArray("animation_player", "exit_area", "traps")]
+[node name="Level1" type="Node2D" unique_id=1029438254 node_paths=PackedStringArray("animation_player", "exit_area", "traps", "player")]
 script = ExtResource("1_7uxs1")
 level_id = 1
 next_level_id = 2
@@ -133,6 +133,7 @@ initial_timer = 40.0
 animation_player = NodePath("AnimationPlayer")
 exit_area = NodePath("Environment/ExitArea")
 traps = [NodePath("Environment/TrapLayer/Traps")]
+player = NodePath("PlayerCharacter")
 metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=239551110]
@@ -235,7 +236,8 @@ position = Vector2(338, -139)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1009467017]
 
-[node name="TimerHud" parent="CanvasLayer" unique_id=1546810575 instance=ExtResource("4_cyt5c")]
+[node name="TimerHud" parent="CanvasLayer" unique_id=1546810575 node_paths=PackedStringArray("player") instance=ExtResource("4_cyt5c")]
+player = NodePath("../../PlayerCharacter")
 metadata/_edit_lock_ = true
 
 [node name="CinematicBars" type="Control" parent="CanvasLayer" unique_id=1670926518]

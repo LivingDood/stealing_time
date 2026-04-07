@@ -3,15 +3,20 @@ extends Resource
 
 var target: Object
 
+var _viewport: Viewport
 var _space_state: PhysicsDirectSpaceState2D
 
 
 func initialize(tree: SceneTree) -> void:
-	var world = tree.current_scene.get_viewport().find_world_2d()
-	_space_state = world.direct_space_state
+	_viewport = tree.current_scene.get_viewport()
+	_space_state = _viewport.find_world_2d().direct_space_state
 
 
 func update(mouse_position: Vector2) -> void:
+	if _viewport.gui_get_hovered_control():
+		target = null
+		return
+	
 	if _space_state:
 		var query = PhysicsPointQueryParameters2D.new()
 		query.position = mouse_position

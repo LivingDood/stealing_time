@@ -4,11 +4,6 @@
 [ext_resource type="Shader" uid="uid://cff2v346qh3vm" path="res://resources/shaders/outline/outline.gdshader" id="2_rrk06"]
 [ext_resource type="Texture2D" uid="uid://b3dh3g2txw88j" path="res://assets/images/sprites/mushroom.png" id="3_dtpy6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrk06"]
-shader = ExtResource("2_rrk06")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/outline_size = 2.0
-
 [sub_resource type="Animation" id="Animation_rrk06"]
 length = 0.001
 tracks/0/type = "value"
@@ -94,12 +89,25 @@ _data = {
 &"grow": SubResource("Animation_iupk5")
 }
 
-[node name="GrowObj" type="AnimatableBody2D" unique_id=1900398055 node_paths=PackedStringArray("sprite", "animation_player") groups=["stealable"]]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrk06"]
+shader = ExtResource("2_rrk06")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 2.0
+shader_parameter/alpha_threshold = 0.990000047025
+
+[node name="GrowObj" type="AnimatableBody2D" unique_id=1900398055 node_paths=PackedStringArray("sprite", "animation_player", "marker") groups=["stealable"]]
 collision_layer = 2
 input_pickable = true
 script = ExtResource("1_v1jtv")
 sprite = NodePath("Sprite2D")
 animation_player = NodePath("AnimationPlayer")
+marker = NodePath("Marker2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1810403594]
+libraries/ = SubResource("AnimationLibrary_t2okv")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=674524364]
+position = Vector2(0, -64)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=202794022]
 material = SubResource("ShaderMaterial_rrk06")
@@ -110,6 +118,3 @@ hframes = 4
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1255144793]
 position = Vector2(0, -64)
 polygon = PackedVector2Array(-20, 64, -20, -32, -64, -48, 64, -48, 20, -32, 20, 64)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1810403594]
-libraries/ = SubResource("AnimationLibrary_t2okv")

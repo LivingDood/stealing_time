@@ -25,3 +25,13 @@ func update() -> void:
 	
 	steal_pressed = Input.is_action_pressed(steal_action)
 	give_pressed = Input.is_action_pressed(give_action)
+
+
+func clear() -> void:
+	direction = 0.0
+	jump_pressed = false
+	jump_just_pressed = false
+	jump_just_released = false
+	
+	steal_pressed = false
+	give_pressed = false

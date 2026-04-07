@@ -7,7 +7,7 @@ func _ready() -> void:
 	door.pause()
 
 func _on_body_entered(body:Node2D):
-	if body is Player:
+	if body is PlayerCharacter:
 		door.unpause()
 		
 		

@@ -43,11 +43,6 @@ exit_area = NodePath("Area2D")
 
 [node name="Character" parent="." unique_id=47124019 instance=ExtResource("2_nvi8s")]
 position = Vector2(430, 175)
-ground_speed = 350.0
-slowing_threshold_time = 65.0
-max_slow_time = 110.0
-min_speed_scale = 0.309
-shrinking_threshold_time = 20
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=711602039 node_paths=PackedStringArray("target")]
 ignore_rotation = false
