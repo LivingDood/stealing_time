@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dtfqqdy7fd5jm" path="res://scenes/objects/moving_platform/door_activation.gd" id="11_5owdk"]
 [ext_resource type="TileSet" uid="uid://ln46eqf1lgbw" path="res://resources/tilesets/dirt.tres" id="11_wlqsf"]
 [ext_resource type="TileSet" uid="uid://dsk7as61obdu4" path="res://resources/tilesets/sign.tres" id="12_slc34"]
+[ext_resource type="PackedScene" uid="uid://cx0ku23srwvur" path="res://scenes/ui/mobile_controls/mobile_controls.tscn" id="15_4xau6"]
 [ext_resource type="PackedScene" uid="uid://wrvyh1hpnb7x" path="res://scenes/ui/pause_menu/pause_menu.tscn" id="15_x3a3q"]
 
 [sub_resource type="Animation" id="Animation_papml"]
@@ -53,18 +54,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerCharacter:process_mode")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_4x8ai"]
 resource_name = "intro"
@@ -104,18 +93,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerCharacter:process_mode")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yxxbu"]
@@ -178,13 +155,15 @@ size = Vector2(142, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hsbt"]
 size = Vector2(105, 128)
 
-[node name="Level2" type="Node2D" unique_id=1522238413 node_paths=PackedStringArray("animation_player", "exit_area")]
+[node name="Level2" type="Node2D" unique_id=1522238413 node_paths=PackedStringArray("animation_player", "exit_area", "player", "mobile_controls")]
 script = ExtResource("1_f1k8i")
 level_id = 2
 next_level_id = 3
 next_level_path = "uid://83wieng44kk8"
 animation_player = NodePath("AnimationPlayer")
 exit_area = NodePath("Environment/ExitArea")
+player = NodePath("PlayerCharacter")
+mobile_controls = NodePath("CanvasLayer/MobileControls")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=699644653]
 process_mode = 3
@@ -345,7 +324,8 @@ position = Vector2(84, 495)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1362938602]
 
-[node name="TimerHud" parent="CanvasLayer" unique_id=1546810575 instance=ExtResource("4_68es0")]
+[node name="TimerHud" parent="CanvasLayer" unique_id=1546810575 node_paths=PackedStringArray("player") instance=ExtResource("4_68es0")]
+player = NodePath("../../PlayerCharacter")
 metadata/_edit_lock_ = true
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=490790483 instance=ExtResource("15_x3a3q")]
@@ -383,3 +363,6 @@ grow_vertical = 0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="MobileControls" parent="CanvasLayer" unique_id=994785595 instance=ExtResource("15_4xau6")]
+visible = false

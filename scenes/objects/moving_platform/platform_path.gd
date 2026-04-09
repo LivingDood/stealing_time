@@ -65,6 +65,13 @@ func _ready() -> void:
 	
 	path_follow = PathFollow2D.new()
 	
+	if !marker:
+		marker = Marker2D.new()
+		add_child(marker)
+		marker.global_position = _sprite.global_position
+		if (!_sprite.centered):
+			marker.global_position += _sprite.texture.get_size()*_sprite.global_scale/2
+	
 	path_follow.rotates = false
 	path_follow.cubic_interp = false
 	path_follow.loop = looping
@@ -97,6 +104,7 @@ func get_real_progress(prog:float)->float:
 	return max_progress/2 - abs(float_mod(prog,max_progress) - max_progress/2)
 
 func steal(seconds:float) -> float:
+	seconds *= _time_transfer_multiplier
 	if _internal_time <= seconds || temporal_offset <= min_temporal_offset:
 		return 0.
 	temporal_offset -= min(seconds,temporal_offset - min_temporal_offset)
@@ -110,6 +118,7 @@ func steal(seconds:float) -> float:
 	return seconds
 
 func give(seconds:float) -> float:
+	seconds *= _time_transfer_multiplier
 	if temporal_offset >= max_temporal_offset:
 		return 0.
 	temporal_offset += min(seconds,max_temporal_offset - temporal_offset)
