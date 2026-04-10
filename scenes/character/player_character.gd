@@ -18,6 +18,7 @@ signal died
 @export var direction_component: DirectionComponent
 @export var move_component: MoveComponent
 @export var jump_component: JumpComponent
+@export var orientation_component:OrientationComponent
 
 @export_group("Mechanics")
 @export var aim_component: AimComponent
@@ -39,6 +40,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	orientation_component.update(self)
+	velocity = orientation_component.to_local(velocity)
 	if is_alive:
 		input_component.update()
 		direction_component.update(input_component.direction)
@@ -54,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	jump_component.update(self, delta, input_component.jump_just_pressed)
 	
 	state_machine.update(delta)
+	velocity = orientation_component.to_body(velocity)
 	move_and_slide()
 
 

@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://unidy1l0v27t" path="res://assets/sounds/particle/particle.ogg" id="8_06x2p"]
 [ext_resource type="Texture2D" uid="uid://dcqystqtmwep1" path="res://assets/images/sprites/character_teen.png" id="8_lo1wj"]
 [ext_resource type="Texture2D" uid="uid://b3t32q6pj1enq" path="res://assets/images/sprites/character_child.png" id="9_0upq2"]
+[ext_resource type="Script" uid="uid://ck84mcs14wovy" path="res://scenes/character/component/orientation_component.gd" id="14_77sxg"]
 [ext_resource type="Script" uid="uid://bb4cn3vn2kq7m" path="res://scenes/character/state/idle_state.gd" id="14_liifm"]
 [ext_resource type="Script" uid="uid://cw6bqog2wy8o1" path="res://scenes/character/state/run_state.gd" id="15_e71uw"]
 [ext_resource type="Script" uid="uid://4h3xo53cxvqh" path="res://scenes/character/state/jump_state.gd" id="16_td4he"]
@@ -79,6 +80,10 @@ metadata/_custom_type_script = "uid://bog4adiq3hvf0"
 [sub_resource type="Resource" id="Resource_e71uw"]
 script = ExtResource("4_c3hal")
 metadata/_custom_type_script = "uid://b5l56rvkeu4qe"
+
+[sub_resource type="Resource" id="Resource_qpa1a"]
+script = ExtResource("14_77sxg")
+metadata/_custom_type_script = "uid://ck84mcs14wovy"
 
 [sub_resource type="Resource" id="Resource_aq0g2"]
 script = ExtResource("6_77sxg")
@@ -356,6 +361,7 @@ input_component = SubResource("Resource_0upq2")
 direction_component = SubResource("Resource_jk8qn")
 move_component = SubResource("Resource_liifm")
 jump_component = SubResource("Resource_e71uw")
+orientation_component = SubResource("Resource_qpa1a")
 aim_component = SubResource("Resource_aq0g2")
 steal_component = SubResource("Resource_c27og")
 time_component = SubResource("Resource_5rb1q")
